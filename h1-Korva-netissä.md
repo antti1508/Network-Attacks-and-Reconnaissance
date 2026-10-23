@@ -18,6 +18,10 @@ Aallonpituus: λ = c (valonnopeus) / f (taajuus) eli aallonpituus on 299792458 /
 
 b) Moduwhat? Kuuntele kanavaa, joka käyttää eri modulaatiota (AM, FM...) kuin edellisessä kohdassa käyttämäsi kanava.
 
+Sitten aloin etsimään kanavaa joka käyttäisi AM, FM... modulaatiota. Selailin hieman kanavia ja vastaan tuli seuraavksi kanava Kopernikus SDR Nordhessen. Etsin kanvalta AM modulaatiolla vesiputouksesta liikennettä ja siltä se löytyikin. 
+
+![Kuva websdr2](/kuvat/websdr_saksa.png)
+
 c) ADS-B. Etsi jokin sinua kiinnnostava lentokone ADS-B Exchange -palvelusta. Kuvaile konetta ja sen lentoa. Selitä, miten tiedot on saatu.
 
 d), e) & f) Vapaaehtoiset tehtävät jäi suorittamatta sillä F-droidin asennus ilman android puhelinta vaatii aikamoisen säädön IOS käyttöjärjestelmällä tai emulaattorin asentelun.
