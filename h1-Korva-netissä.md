@@ -10,7 +10,7 @@ b) Moduwhat? Kuuntele kanavaa, joka käyttää eri modulaatiota (AM, FM...) kuin
 
 c) ADS-B. Etsi jokin sinua kiinnnostava lentokone ADS-B Exchange -palvelusta. Kuvaile konetta ja sen lentoa. Selitä, miten tiedot on saatu.
 
-d), e) & f) Vapaaehtoiset tehtävät jäi suorittamatta sillä F-droidin asennus ilman android puhelinta vaatii aikamoisen säädön IOS käyttöjärjestrlmällä tai emulaattorin asentelun.
+d), e) & f) Vapaaehtoiset tehtävät jäi suorittamatta sillä F-droidin asennus ilman android puhelinta vaatii aikamoisen säädön IOS käyttöjärjestelmällä tai emulaattorin asentelun.
 
 ## Lähteet
 Karvinen. T 2026. Verkkoon tunkeutuminen ja tiedustelu. https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
