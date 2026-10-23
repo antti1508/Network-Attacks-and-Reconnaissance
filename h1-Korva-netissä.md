@@ -14,3 +14,4 @@ d), e) & f) Vapaaehtoiset tehtävät jäi suorittamatta sillä F-droidin asennus
 
 ## Lähteet
 Karvinen. T 2026. Verkkoon tunkeutuminen ja tiedustelu. https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
+Wikipedia. Sähkömagneettinen spektri. https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6magneettinen_spektri
