@@ -1,12 +1,14 @@
 # h1 Korva netissä
 
-x) Spektrini. Piirrä oma sähkömagneettinen spektri. Eli jana, jossa taajuus kasvaa. Ja 3-10 itseäsi kiinnostavaa sovellusta. Saavat olla aivan tavanomaisia. Merkitse nuolilla, mihin suuntaa kasvavat: aallonpituus, antennin koko, läpäisevyys, kyky siirtää tietoa. Tämä alakohta ei edellytä testejä tietokoneella.
+Aa
+
 a) WebSDR. Etäkäytä WebSDR-ohjelmaradiota, joka on kaukana sinusta ja kuuntele radioliikennettä. Radioliikenne tulee siepata niin, että radiovastaanotin on joko eri maassa tai vähintään 400 km paikasta, jossa teet tätä tehtävää. Käytä esimerkkinä julkista, suurelle yleisölle tarkoitettua viestiä, esimerkiksi yleisradiolähetystä. Kerro löytämäsi taajuus, aallonpituus ja modulaatio. Kuvaile askeleet ja ota ruutukaappaus. (Tehtävässä ei saa ilmaista sellaisen viestin sisältöä tai olemassaoloa, joka ei ole tarkoitettu julkiseksi. Voit sen sijaan kuvailla, miten sait julkisen radiolähetyksen kuulumaan kaiuttimistasi. Julkisten, esimerkiksi yleisradiolähetysten sisältöä saa tietysti kuvailla.)
+
 b) Moduwhat? Kuuntele kanavaa, joka käyttää eri modulaatiota (AM, FM...) kuin edellisessä kohdassa käyttämäsi kanava.
+
 c) ADS-B. Etsi jokin sinua kiinnnostava lentokone ADS-B Exchange -palvelusta. Kuvaile konetta ja sen lentoa. Selitä, miten tiedot on saatu.
-d) Vapaaehtoinen Atalaya. Asenna F-Droid ja sillä Atalaya. Käytä ohjelmaa ja selitä tulokset.
-e) Vapaaehtoinen WifiAnalyzer. Asenna F-Droid ja sillä WifiAnalyzer. Käytä ohjelmaa ja selitä tulokset.
-f) Vapaaehtoinen GPSTest. Asenna F-Droid ja sillä GPSTest. Käytä ohjelmaa ja selitä tulokset.
+
+d), e) & f) Vapaaehtoiset tehtävät jäi suorittamatta sillä F-droidin asennus ilman android puhelinta vaatii aikamoisen säädön IOS käyttöjärjestrlmällä tai emulaattorin asentelun.
 
 ## Lähteet
-Karvinen. T 2026. 
+Karvinen. T 2026. Verkkoon tunkeutuminen ja tiedustelu. https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
