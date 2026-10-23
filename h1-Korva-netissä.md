@@ -12,7 +12,7 @@ Lösin vastaanottimetin WebSDR verkkosivuston etusivulta ja katsoin että se on 
 
 Taajuus: 7135.00kHz, 7135000Hz
 
-Aallonpituus: λ = c / f eli aallonpituus on 299792458 / 7135000 = 42,01716 metriä ≈ 42 metriä
+Aallonpituus: λ = c (valonnopeus) / f (taajuus) eli aallonpituus on 299792458 / 7135000 = 42,01716 metriä ≈ 42 metriä
 
 ![Kuva websdr1](/kuvat/websdr_brasilia.png)
 
