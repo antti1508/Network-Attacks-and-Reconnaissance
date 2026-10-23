@@ -2,6 +2,8 @@
 
 a) Vapaaehtoinen. Hei maailma. Sieppaa liikennettä WireSharkilla. Merkitse TCP/IP-pinon kerrokset ruutukaappaukseen.
 
+Sieppasin Eth4-kortilta hetken liikennettä, jonka jälkeen merkitsin kuvaan kerrokset eri väreillä. Kuvassa on avattu värien tarkoitukset. Suoritin tehtävän PC:llä ja käytin Wireshark-ohjelman Windows-versiota.
+
 ![Kuva wiresharkista](/kuvat/wireshark.png)
 
 ## Lähteet:
