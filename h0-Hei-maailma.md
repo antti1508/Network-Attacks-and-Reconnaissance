@@ -7,5 +7,5 @@ Sieppasin Eth4-kortilta hetken liikennettä, jonka jälkeen merkitsin kuvaan ker
 ![Kuva wiresharkista](/kuvat/wireshark.png)
 
 ## Lähteet:
-Karvinen. T 2026. Verkkoon tunkeutuminen ja tiedustelu.
-https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
+Karvinen. T 2026. Verkkoon tunkeutuminen ja tiedustelu. https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
+Wikipedia. TCP/IP-viitemalli. https://fi.wikipedia.org/wiki/TCP/IP-viitemalli
