@@ -8,6 +8,8 @@ a) WebSDR. Etäkäytä WebSDR-ohjelmaradiota, joka on kaukana sinusta ja kuuntel
 
 Käytetty vastaanotin: Pardinho WebSDR, Brasilia, noin 10500km, linkki: http://appr.org.br:8911/
 
+Lösin vastaanottimetin WebSDR verkkosivuston etusivulta ja katsoin että se on tarpeeksi kaukana (yli 400km), sen jälkeen avasin vastaanottimen ja yllätykseksi se toimi heti. Puheesta en saanut hirveästi selvää kielimuurin takia, mutta verkon perusteella radio toistaa mahdollisesti muusikko Pardinhon ääntä ja musiikkia.
+
 Taajuus: 7135.00kHz, 7135000Hz
 
 Aallonpituus: λ = c / f eli aallonpituus on 299792458 / 7135000 = 42,01716 metriä ≈ 42 metriä
