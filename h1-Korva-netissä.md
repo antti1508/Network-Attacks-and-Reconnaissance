@@ -18,7 +18,7 @@ Aallonpituus: λ = c (valonnopeus) / f (taajuus) eli aallonpituus on 299792458 /
 
 b) Moduwhat? Kuuntele kanavaa, joka käyttää eri modulaatiota (AM, FM...) kuin edellisessä kohdassa käyttämäsi kanava.
 
-Sitten aloin etsimään kanavaa joka käyttäisi AM, FM... modulaatiota. Selailin hieman kanavia ja vastaan tuli seuraavksi kanava Kopernikus SDR Nordhessen. Etsin kanavalta AM modulaatiolla vesiputouksesta liikennettä ja siltä se löytyikin. 
+Sitten aloin etsimään kanavaa joka käyttäisi jotain muuta kuin LSB modulaatiota. Selailin hieman kanavia ja vastaan tuli seuraavksi kanava Kopernikus SDR Nordhessen. Etsin kanavalta AM modulaatiolla vesiputouksesta liikennettä ja siltä se löytyikin. 
 
 ![Kuva websdr2](/kuvat/websdr_saksa.png)
 
