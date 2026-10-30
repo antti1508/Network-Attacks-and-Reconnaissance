@@ -2,7 +2,7 @@
 
 # x) Lue ja tiivistä
 
-Tiivistelmä Karvinen 2025: Wireshark - Getting Started (https://terokarvinen.com/wireshark-getting-started/)
+## Tiivistelmä Karvinen 2025: Wireshark - Getting Started (https://terokarvinen.com/wireshark-getting-started/)
 
 ```console
 # Wiresharkin asennus tapahtuu komennoilla:
@@ -14,7 +14,7 @@ Tiivistelmä Karvinen 2025: Wireshark - Getting Started (https://terokarvinen.co
 * Tilastotyökalut tarjoavat yleiskuvan kaapatusta liikenteestä, kuten laitteista (Endpoints), liikenteen määrästä suhteessa aikaan (I/O Graphs) sekä protokollajakaumasta (Protocol hierarchy).
 * Liikennettä voidaan suodattaa hakukentässä esimerkiksi protokollan ``dns``, ``tls``, ``http`` perusteella.
 
-Tiivistelmä Karvinen 2025: Network Interface Names on Linux (https://terokarvinen.com/network-interface-linux/)
+## Tiivistelmä Karvinen 2025: Network Interface Names on Linux (https://terokarvinen.com/network-interface-linux/)
 
 * Verkkoliitäntä vastaa fyysistä tai virtuaalista verkkokorttia, ja nykyaikaiset systemd-pohjaiset Linux-jakelut nimeävät ne yhtenäisen käytännön mukaisesti.
 * Nimen alkuosa määrittää yhteystyypin: en tarkoittaa langallista Ethernetiä, wl langatonta WLAN-verkkoa ja lo koneen sisäistä loopback-sovitinta.
@@ -25,6 +25,7 @@ Tiivistelmä Karvinen 2025: Network Interface Names on Linux (https://terokarvin
 ~$ ip a
 ~$ ip route
 ```
+
 # a) Linux
 
 En asentanut uudelleen lokaalisti Debian-konetta sillä minulla ei ole mitään ongelmia asennuksen kanssa (Tätä alakohtaa ei poikkeuksellisesti tarvitse raportoida, jos sinulla ei ole mitään ongelmia. (Karvinen, T. Verkkosivu. 2026) )
