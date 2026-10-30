@@ -66,6 +66,15 @@ Kuva 4. Ping-testin tulos kun kone on verkossa.
 
 # c) Wireshark
 
+Yleisesti Kali-Linux sisältää Wireshark ohjelman valmiiksi, mutta kokeilun vuoksi ajoin komennot:
+
+```bash
+sudo apt update
+sudo apt install wireshark
+```
+
+Tuloksena komentorivi kertoi, että Wireshark on jo asennettu virtuaalikoneelle.
+
 # d) Oikeesti TCP/IP
 
 # e) Mitäs tuli surffattua?
