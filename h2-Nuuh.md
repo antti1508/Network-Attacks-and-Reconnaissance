@@ -4,10 +4,11 @@
 
 ## Tiivistelmä Karvinen 2025: Wireshark - Getting Started (https://terokarvinen.com/wireshark-getting-started/)
 
-```console
-# Wiresharkin asennus tapahtuu komennoilla:
-~$ sudo apt-get update
-~$ sudo apt-get install wireshark
+Wiresharkin asennus tapahtuu komennoilla:
+
+```bash
+$ sudo apt-get update
+$ sudo apt-get install wireshark
 ```
 * Muidenkin kun sudoers-käyttäjien tulisi saada napata pakketteja ohjelmalla
 * Liikenteen kaappaus aloitetaan valitsemalla aktiivinen verkkoliitäntä (tai kaikki liitännät "any"-valinnalla), ja kerätty liikenne voidaan tallentaa pcap-tiedostomuotoon myöhempää tarkastelua varten.
@@ -20,10 +21,11 @@
 * Nimen alkuosa määrittää yhteystyypin: en tarkoittaa langallista Ethernetiä, wl langatonta WLAN-verkkoa ja lo koneen sisäistä loopback-sovitinta.
 * Etuliitteen jälkeiset merkit viittaavat laitteen fyysiseen kytkentäpaikkaan tai MAC-osoitteeseen.
 
-```console
-# Oman koneen käytössä olevat verkkoliitännät ja reititykset voi tarkistaa komentoriviltä komennoilla:
-~$ ip a
-~$ ip route
+Oman koneen käytössä olevat verkkoliitännät ja reititykset voi tarkistaa komentoriviltä komennoilla:
+
+```bash
+$ ip a
+$ ip route
 ```
 
 # a) Linux
@@ -31,6 +33,36 @@
 En asentanut uudelleen lokaalisti Debian-konetta sillä minulla ei ole mitään ongelmia asennuksen kanssa (Tätä alakohtaa ei poikkeuksellisesti tarvitse raportoida, jos sinulla ei ole mitään ongelmia. (Karvinen, T. Verkkosivu. 2026) )
 
 # b) Ei voi kalastaa
+
+Käynnistin Kali-Linux virtuaalikoneeni ja sen auettua katkaisin Wired connection 1:n oikeasta yläkulmasta painamalla disconnect nappia:
+
+<img width="473" height="210" alt="kuva" src="https://github.com/user-attachments/assets/b04ae0b9-e479-437c-b870-f1ab8083f677" />
+
+Kuva 1. Kali-Linuxin verkon katkaisu
+
+Kokeilin, että verkkoyhteys katkesi oikeasti (1.1.1.1 on Cloudflaren  julkinen DNS-palvelin ja 8.8.8.8 on Googlen julkinen DNS-palvelin):
+
+```bash
+$ ping 1.1.1.1 # Cloudflare
+$ ping 8.8.8.8 # Google
+```
+Alempana kuvassa on testin tulokset: 
+
+<img width="867" height="561" alt="kuva" src="https://github.com/user-attachments/assets/29b369aa-34e8-43dc-9410-3bbca528b049" />
+
+Kuva 2. Ping-testin tulokset.
+
+Verkon virtuaalikoneeseen sai palautettua oikeasta yläkulmasta laittamalla Wired connection 1:n takaisin päälle:
+
+<img width="422" height="253" alt="kuva" src="https://github.com/user-attachments/assets/91b84ca6-dd99-4903-bb00-e6c2e80df7d1" />
+
+Kuva 3. Kali-Linuxin yhdistäminen takaisin verkkoon.
+
+Tämän jälkeen ajoin saman ping-testin täysin samoihin osoitteisiin, alempana tulos kuvasssa: 
+
+<img width="1917" height="1077" alt="kuva" src="https://github.com/user-attachments/assets/0d428c2f-db0c-43c7-beef-571317e3f799" />
+
+Kuva 4. Ping-testin tulos kun kone on verkossa.
 
 # c) Wireshark
 
