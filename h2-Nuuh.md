@@ -72,6 +72,7 @@ Yleisesti Kali-Linux sisältää Wireshark ohjelman valmiiksi, mutta kokeilun vu
 sudo apt update
 sudo apt install wireshark
 ```
+(Karvinen 2025b)
 
 Wireshark-ohjelmassa oli päivitys, kuva alla:
 
