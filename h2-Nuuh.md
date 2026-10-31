@@ -138,12 +138,51 @@ Kuva 10. MAC-osoite ja LAA tunnistus wiresharkissa.
 
 # h) Millä weppipalvelimella käyttäjä on surffaillut?
 
+DNS ja TCP paketeista, sekä IP-tiedoista ja endpoint resolvesta selviää, että ainakin domaineihin www[.]google[.]com, terokarvinen[.]com, gc[.]zgo[.]at, goatcounter[.]netlify[.]com & terokarvinen[.]goatcounter[.]com on otettu pakettikaappauksen aikana yhteyksiä.
+
 # i) Analyysi
 
+Aloitin liikenteen sieppauksen Kali-linux virtuaalikoneellani. Tein samalla himena jotain pientä ääntä kaappaukseen, jotta siihen saadaan jotai tuloksia. Alempana kuva kaapatusta liikenteestä:
+
+<img width="1913" height="1047" alt="kuva" src="https://github.com/user-attachments/assets/8c27fbc9-9605-4102-8577-aab638681824" />
+
+Kuva 11. Kaapattua liikennettä Wireshark ohjelmalla.
+
+PCAP-tiedoston avaaminen tarkemmin
+
+Ympäristön perustiedot:
+* Oma kone: IP-osoite on 10.0.2.15
+* Oletusyhdyskäytävä (Reititin): IP-osoite 10.0.2.2, jonka MAC-osoite on 52:54:00:12:35:00
+
+Paketit 1–12 ja 15–16: ICMP (Ping)
+* Koneelta on ajettu komento ```ping 8.8.8.8``` (Googlen julkinen nimipalvelin).
+* Echo (ping) request (parittomat paketit) Client (10.0.2.15) lähettää 98 tavun kokoisen kyselypaketin osoitteeseen 8.8.8.8.
+* Echo (ping) reply (parilliset paketit): Palvelin 8.8.8.8 vastaa välittömästi takaisin.
+
+Paketit 13–14 ja 32–33: ARP
+* Paketti 13: Client kysyy: "Who has 10.0.2.2? Tell 10.0.2.15"
+* Paketti 14: Reititin vastaa: "10.0.2.2 is at 52:54:00:12:35:00".
+* Sama toistuu paketeissa 32-33
+
+Paketit 17-31 DNS, TCP & HTTP: Curl kysely
+* Osoitteen selvitys (DNS, paketit 17–20): Client ei tiedä, missä terokarvinen[.]com sijaitsee, joten se kysyy nimipalvelimelta sivuston IP-osoitetta.
+* Yhteyden avaus (TCP-kättely, paketit 21–23): Ennen varsinaisen datan siirtoa client ja destination varmistavat yhteyden toimivuuden
+* Sivun hakeminen (HTTP, paketit 24–27): Client pyytää etusivua (GET /), ja destination vastaa koodilla 301 Moved Permanently
+* Yhteyden sulkeminen (TCP, paketit 28–31): Koska pyyntö on valmis, client ja destination lähettävät toisilleen lopetuspyynnöt
+
+34–35: NTP (Kellonajan synkronointi)
+* Mitä tapahtuu: Käyttöjärjestelmän taustapalvelu tarkistaa automaattisesti oikean kellonajan verkosta NTP-protokollalla (Network Time Protocol).   
+* Paketti 34: Oma koneesi (client) lähettää aikakyselyn NTP-palvelimelle 95.216.160.21.
+* Paketti 35: Palvelin (server) vastaa ja kertoo tarkan kellonajan, jotta koneesi kello pysyy sekunnilleen ajassa.
+
 ## Lähteet
-Karvinen, T. Verkkosivu. 2026 https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
+Karvinen, T. 2025a. Network interface Linux. Verkkosivu. Luettavissa: https://terokarvinen.com/network-interface-linux/. Luettu: 30.10.2026.
 
-Karvinen, T. Luento verkkoon tunkeutuminen ja tiedustelu. 27.10.2026
+Karvinen, T. 2025b. Wireshark getting started. Verkkosivu. Luettavissa: https://terokarvinen.com/wireshark-getting-started/. Luettu: 30.10.2026.
 
-Wikipedia. https://en.wikipedia.org/wiki/MAC_address
+Karvinen, T. 2026a. Verkkoon tunkeutuminen ja tiedustelu. Verkkosivu. Luettavissa: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/. Luettu: 31.10.2026.
+
+Karvinen, T. 2026b. Verkkoon tunkeutuminen ja tiedustelu. Luento 27.10.2026. Haaga-Helia ammattikorkeakoulu. Helsinki.
+
+Wikipedia s.a. MAC address. Luettavissa: https://en.wikipedia.org/wiki/MAC_address. Luettu: 31.10.2026.
 
