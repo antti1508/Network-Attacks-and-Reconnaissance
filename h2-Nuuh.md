@@ -152,8 +152,8 @@ Kuva 11. Kaapattua liikennettä Wireshark ohjelmalla.
 PCAP-tiedoston avaaminen tarkemmin
 
 Ympäristön perustiedot:
-* Oma kone: IP-osoite on 10.0.2.15
-* Oletusyhdyskäytävä (Reititin): IP-osoite 10.0.2.2, jonka MAC-osoite on 52:54:00:12:35:00
+* Client: IP-osoite 10.0.2.15
+* Oletusyhdyskäytävä: IP-osoite 10.0.2.2 & MAC-osoite 52:54:00:12:35:00
 
 Paketit 1–12 ja 15–16: ICMP (Ping)
 * Koneelta on ajettu komento ```ping 8.8.8.8``` (Googlen julkinen nimipalvelin).
@@ -173,8 +173,8 @@ Paketit 17-31 DNS, TCP & HTTP: Curl kysely
 
 34–35: NTP (Kellonajan synkronointi)
 * Mitä tapahtuu: Käyttöjärjestelmän taustapalvelu tarkistaa automaattisesti oikean kellonajan verkosta NTP-protokollalla (Network Time Protocol).   
-* Paketti 34: Oma koneesi (client) lähettää aikakyselyn NTP-palvelimelle 95.216.160.21.
-* Paketti 35: Palvelin (server) vastaa ja kertoo tarkan kellonajan, jotta koneesi kello pysyy sekunnilleen ajassa.
+* Paketti 34: Client lähettää aikakyselyn NTP-palvelimelle 95.216.160.21.
+* Paketti 35: Server vastaa ja kertoo tarkan kellonajan, jotta koneesi kello pysyy sekunnilleen ajassa.
 
 ## Lähteet
 Karvinen, T. 2025a. Network interface Linux. Verkkosivu. Luettavissa: https://terokarvinen.com/network-interface-linux/. Luettu: 30.10.2026.
