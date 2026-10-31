@@ -130,7 +130,7 @@ Kuva 9. JA3 hashin tunnistus.
 
 # g) Minkä merkkinen verkkokortti käyttäjällä on?
 
-Käyttäjän verkkokortti selviää todennäköisesti Ethernet II kohdan sisältä, aiemmin löysimme IP-osoitteet 192.168.122.1 joka todnäk on Default Gateway ja osoitteen 192.168.122.7, joka todnäk on client host IP. Avasin paketin 1 ja tarkastin Source MAC-osoitteen sillä paketin 1 source on 192.168.122.7. Paketissa MAC-osoitteen arvo on 52:54:00:cc:d7:12 ja Wireshark tunnistaa että osoite on Locally administered address.
+Käyttäjän verkkokortti selviää todennäköisesti Ethernet II kohdan sisältä, aiemmin löysimme IP-osoitteet 192.168.122.1 joka todnäk on Default Gateway ja osoitteen 192.168.122.7, joka todnäk on client host IP. Avasin paketin 1 ja tarkastin Source MAC-osoitteen sillä paketin 1 source on 192.168.122.7. Paketissa MAC-osoitteen arvo on 52:54:00:cc:d7:12 ja Wireshark tunnistaa että osoite on Locally administered address. LAA-osoitetta ei löydy IEEE:n laitevalmistajakannasta.
 
 <img width="1911" height="740" alt="kuva" src="https://github.com/user-attachments/assets/3ac0773a-d043-4e48-ab7a-aed20221241e" />
 
