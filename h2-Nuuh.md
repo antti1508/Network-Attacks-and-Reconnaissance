@@ -73,13 +73,60 @@ sudo apt update
 sudo apt install wireshark
 ```
 
-Tuloksena komentorivi kertoi, että Wireshark on jo asennettu virtuaalikoneelle.
+Wireshark-ohjelmassa oli päivitys, kuva alla:
+
+<img width="853" height="148" alt="kuva" src="https://github.com/user-attachments/assets/21cbadf1-8dc1-4069-af69-617185611a0e" />
+
+Kuva 5. Komennon tulos.
+
+Tämän jälkeen avasin Wiresharkin komennolla ```sudo wireshark``` ja sieppasin hieman omaa liikennettä verkkokortiltani:
+
+<img width="1913" height="682" alt="kuva" src="https://github.com/user-attachments/assets/17994759-c3ba-4e1a-a63f-5056fd6e8120" />
+
+Kuva 6. Siepattua liikennettä.
 
 # d) Oikeesti TCP/IP
 
+Valitsin siepatusta liikenteestä paketin 3 ja merkitsin siihen väreillä TCP/IP-mallin neljä kerrostä
+* Keltainen = Link Layer
+* Sininen = Network Layer
+* Vihreä = Transport Layer
+* Punainen = Application Layer
+
+<img width="1919" height="778" alt="tcpip" src="https://github.com/user-attachments/assets/ecd6222f-a0cd-4faf-aec1-82570e4ee70d" />
+
+Kuva 6. TCP/IP-mallit kuvassa väreillä.
+
 # e) Mitäs tuli surffattua?
 
+Latasin tiedoston surfing-secure.pcap ja avasin tiedoston Wiresharkilla normaalisti vain Kali-Linuxin UI:n kautta. Käytin avukseni alkuun Statistics välilehteä Wireshark ohjelmasta ja sain sieltä seuraavat tiedot:
+
+* I/O Graph kertoo että aikajana pcap-tiedostolla on noin 7 sekuntia.
+* Protocol hierarchy kertoo että pakettien jakauma on seuraavanlainen: TCP 83.7%, UDP 15.5% ja ARP 0.7%.
+* Pakettien lukumäärä on 283.
+* IPv4-osoitteita on 7 (3.75.10.80, 34.117.188.166, 135.181.139.209, 139.162.131.217, 192.168.122.1 (private), 192.168.122.7 (private) & 216.58.210.164)
+
+Seuraavaksi katsoin hieman lisätietoa IPv4 osoitteista Virustotal-verkkosivun avulla, sillä siellä voi hakea montaa osoitetta samaan aikaan.
+
+<img width="1550" height="609" alt="kuva" src="https://github.com/user-attachments/assets/369559a0-9aca-493f-8aef-19dfc90ca2ce" />
+
+Kuva 7. Ipv4-osoitetiedot.
+
+Tiedostossa näyttäisi olevan liikennettä DNS, QUICK, TCP ja TLS paketeilla ja domainit joihin otetaan yhteyttä ovat ainakin: www[.]google[.]com, terokarvinen[.]com, gc[.]zgo[.]at, goatcounter[.]netlify[.]com & terokarvinen[.]goatcounter[.]com 
+
 # f) Vapaaehtoinen, vaikea: Mitä selainta käyttäjä käyttää?
+
+Koska pcap-tiedoston DNS liikenteestä ei löytynyt kyselyitä selaimien domaineihin päin aloin selvittämään selainta TLS-liikenteen kautta. TLS-paketeista löytyy JA4 & JA3 hasheja, joita pystyy käyttämään selaimen tunnistamiseen. 
+
+<img width="1904" height="873" alt="kuva" src="https://github.com/user-attachments/assets/6cc0391e-0dab-4423-8386-288ef13f24d2" />
+
+Kuva 8. JA3 hash TLS-liikenteestä.
+
+Kopioin JA3 hashin ja etsin neitstä "JA3 hash detector", jonka jälkeen menin sivulle https://ja3.zone/ ja syötin hashin sinne, tulokseksi sain Firefox.
+
+<img width="1904" height="856" alt="kuva" src="https://github.com/user-attachments/assets/f76fc788-366f-49f3-bd33-9e6c35ceb067" />
+
+Kuva 9. JA3 hashin tunnistus.
 
 # g) Minkä merkkinen verkkokortti käyttäjällä on?
 
