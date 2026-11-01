@@ -143,7 +143,7 @@ DNS ja TCP paketeista, sekä IP-tiedoista ja endpoint resolvesta selviää, ett�
 
 # i) Analyysi
 
-Aloitin liikenteen sieppauksen Kali-linux virtuaalikoneellani. Tein samalla himena jotain pientä ääntä kaappaukseen, jotta siihen saadaan jotai tuloksia. Alempana kuva kaapatusta liikenteestä:
+Aloitin liikenteen sieppauksen Kali-linux virtuaalikoneellani. Tein samalla pientä ääntä kaappaukseen, jotta siihen saadaan jotain tuloksia. Alempana kuva kaapatusta liikenteestä:
 
 <img width="1913" height="1047" alt="kuva" src="https://github.com/user-attachments/assets/8c27fbc9-9605-4102-8577-aab638681824" />
 
