@@ -22,4 +22,4 @@
 
 # h) Vapaaehtoinen: Sdr++
 
-# i) Vapaaehtoinen
+# i) Vapaaehtoinen, vaikeahko: GNU Radio
