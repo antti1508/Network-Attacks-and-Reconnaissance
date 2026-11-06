@@ -24,6 +24,12 @@
 
 # b) rtl_433 (a kohta puuttui ohjeista)
 
+Aloitin asennusprosessin käynnistämällä Debian 13 virtuaalikoneeni, jonka jälkeen ajoin komentoriviltä komennon: ```sudo apt update && sudo apt install rtl_433 -y```. Komennon jälkeen oli aika kokeilla, että rtl-433 asennettiin onnistuneesti ja että versio vastaa ohjeissa anettua rtl_433 version 25.02:a. Varmistin tämän ajamalla komennon ```rtl_433 -V``` komentorivillä, parametri "V" tulostaa rtl-433:n versionumeron. Alempana kuva tuloksesta:
+
+<img width="1126" height="229" alt="kuva" src="https://github.com/user-attachments/assets/ad0664cf-8396-48df-a0c6-6c9a311cc1db" />
+
+Kuva 1. rtl-433:n versionumero.
+
 # c) Automaattinen analyysi
 
 # d) Too compex 16?
@@ -37,3 +43,7 @@
 # h) Vapaaehtoinen: Sdr++
 
 # i) Vapaaehtoinen, vaikeahko: GNU Radio
+
+## Lähteet
+
+Karvinen, T. Verkkoon tunkeutuminen ja tiedustelu. 2026. Luettavissa: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/ Luettu: 6.11.2026.
