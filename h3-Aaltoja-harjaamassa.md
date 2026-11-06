@@ -32,7 +32,7 @@ Kuva 1. rtl-433:n versionumero.
 
 # c) Automaattinen analyysi
 
-Aloitin tämän tehtävän avaamalla rtl-433 ohjelmalla tiedoston Converted_433.92M_2000k.cs8. Käytin tähän komentoa ```rtl_433 -r Converted_433.92M_2000k.cs8```. Komennon parametri -r lukee datan määritetystä tiedostosta sen sijaan, että rtl_433 siirtyisi kuuntelutilaan. Komennolla saadaan seuraavanlainen tuloste:
+Aloitin tämän tehtävän avaamalla rtl-433 ohjelmalla tiedoston Converted_433.92M_2000k.cs8. Käytin tähän komentoa ```rtl_433 -r Converted_433.92M_2000k.cs8```. Komennon parametri "-r" lukee datan määritetystä tiedostosta sen sijaan, että rtl_433 siirtyisi kuuntelutilaan. Komennolla saadaan seuraavanlainen tuloste:
 
 <img width="1362" height="859" alt="kuva" src="https://github.com/user-attachments/assets/30a028d0-c048-4f8f-b042-a0384571f45c" />
 
