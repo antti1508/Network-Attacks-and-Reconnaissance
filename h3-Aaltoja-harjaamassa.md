@@ -38,11 +38,9 @@ Aloitin tämän tehtävän avaamalla rtl-433 ohjelmalla tiedoston Converted_433.
 
 Kuva 2. Tiedoston sisältö.
 
-Seuraavaksi tehtänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä joka näkyy ylempänä kuvassa. Avataan alkuun model-osiot kuvasta.
+Seuraavaksi tehtänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä joka näkyy ylempänä kuvassa. Avataan alkuun model-osiot kuvasta. Osioiden avaamiseen käytin lähteenä rtl_443:n omaa github-sivua: https://github.com/merbanan/rtl_433. 
 
-* KlikAanKlikUit-Switch:
-* Proove-Security: 
-* Nexa-Security:
+rtl_433-dokumentaation ja RFXtrx-yhteensopivuuslistan mukaan KlikAanKlikUit, Nexa ja Proove käyttävät samaa avointa 433 MHz -kytkinprotokollaa (HomeEasy/AC), minkä vuoksi sama lähetys tunnistuu rinnakkain usealla eri laitenimikkeellä.
 
 Time-kohta kertoo tallennuksessa aikaleiman, jolloin laite on havaittu tallennuksen alettua.
 
