@@ -48,6 +48,18 @@ House Code on lähettimen oma yksilöllinen tunnistenumero, jolla eri laitteet e
 
 # d) Too compex 16?
 
+Aloitin tehtävän lataamalla näytetiedoston Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s ja kokeilin avata sitä rtl_433-ohjelmalla, käytin tässä komentoa ```rtl_433 -r Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s```. Alla olevasta kuvasta näkyy ettei tiedostoa saada luettua:
+
+<img width="1696" height="502" alt="kuva" src="https://github.com/user-attachments/assets/778eb308-4f82-4638-b785-fd6157709f94" />
+
+Kuva 3. Kokeilu avata complex16s tiedostoa. 
+
+Jotta tiedosto saadaan toimimaan rtl_443-ohjelmalla tulee tiedostotyyppiä muuttaa, suoritin muutoksen komennolla ```cp Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.cs8```. Tämän jälkeen kokeilin avata tiedostoa uudelleen rtl_443-ohjelmalla ja saan seuraavanlaisen tuloksen:
+
+<img width="1180" height="996" alt="kuva" src="https://github.com/user-attachments/assets/bfeca7a5-10d7-4b05-8659-e2006ea9e7b5" />
+
+Kuva 4. Muunnettu tiedosto avattuna rtl_433-ohjelmalla.
+
 # e) Ultimate
 
 # f) Yleiskuva
