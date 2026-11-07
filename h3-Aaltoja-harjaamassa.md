@@ -38,7 +38,15 @@ Aloitin tämän tehtävän avaamalla rtl-433 ohjelmalla tiedoston Converted_433.
 
 Kuva 2. Tiedoston sisältö.
 
-Seuraavaksi tehtänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä joka näkyy ylempänä kuvassa.
+Seuraavaksi tehtänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä joka näkyy ylempänä kuvassa. Avataan alkuun model-osiot kuvasta.
+
+* KlikAanKlikUit-Switch:
+* Proove-Security: 
+* Nexa-Security:
+
+Time-kohta kertoo tallennuksessa aikaleiman, jolloin laite on havaittu tallennuksen alettua.
+
+House Code on lähettimen oma yksilöllinen tunnistenumero, jolla eri laitteet erotetaan toisistaan.
 
 # d) Too compex 16?
 
