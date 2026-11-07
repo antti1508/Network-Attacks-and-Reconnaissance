@@ -38,6 +38,8 @@ Aloitin tämän tehtävän avaamalla rtl-433 ohjelmalla tiedoston Converted_433.
 
 Kuva 2. Tiedoston sisältö.
 
+Seuraavaksi tehtänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä joka näkyy ylempänä kuvassa.
+
 # d) Too compex 16?
 
 # e) Ultimate
