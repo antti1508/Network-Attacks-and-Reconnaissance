@@ -40,7 +40,7 @@ Kuva 2. Tiedoston sisältö.
 
 Seuraavaksi tehtänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä joka näkyy ylempänä kuvassa. Avataan alkuun model-osiot kuvasta. Osioiden avaamiseen käytin lähteenä rtl_443:n omaa github-sivua: https://github.com/merbanan/rtl_433. 
 
-rtl_433-dokumentaation ja RFXtrx-yhteensopivuuslistan mukaan KlikAanKlikUit, Nexa ja Proove käyttävät samaa avointa 433 MHz -kytkinprotokollaa (HomeEasy/AC), minkä vuoksi sama lähetys tunnistuu rinnakkain usealla eri laitenimikkeellä.
+RF-HUB:n yhteensopivuusoppaan mukaan KlikAanKlikUit, Nexa ja Proove käyttävät keskenään samaa radioprotokollaa, minkä vuoksi yksi fyysinen lähetys laukaisee rtl_433-ohjelmassa useamman laitedekooderin peräkkäin samalla aikaleimalla. https://rfhub.se/en/compatibility
 
 Time-kohta kertoo tallennuksessa aikaleiman, jolloin laite on havaittu tallennuksen alettua.
 
@@ -63,3 +63,5 @@ House Code on lähettimen oma yksilöllinen tunnistenumero, jolla eri laitteet e
 Karvinen, T. Verkkoon tunkeutuminen ja tiedustelu. 2026. Luettavissa: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/ Luettu: 6.11.2026.
 
 Karvinen, T 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento. 3.11.2026.
+
+https://rfhub.se/en/compatibility
