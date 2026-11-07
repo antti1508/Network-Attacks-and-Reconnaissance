@@ -54,7 +54,7 @@ Aloitin tehtävän lataamalla näytetiedoston Recorded-HackRF-20250411_183354-43
 
 Kuva 3. Kokeilu avata complex16s tiedostoa. 
 
-Jotta tiedosto saadaan toimimaan rtl_443-ohjelmalla tulee tiedostotyyppiä muuttaa, suoritin muutoksen komennolla ```cp Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.cs8```. Tämän jälkeen kokeilin avata tiedostoa uudelleen rtl_443-ohjelmalla ja saan seuraavanlaisen tuloksen:
+Jotta tiedosto saadaan toimimaan rtl_443-ohjelmalla tulee tiedostotyyppiä muuttaa (Merbanan. 2024), suoritin muutoksen komennolla ```cp Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.cs8```. Tämän jälkeen kokeilin avata tiedostoa uudelleen rtl_443-ohjelmalla ja saan seuraavanlaisen tuloksen:
 
 <img width="1180" height="996" alt="kuva" src="https://github.com/user-attachments/assets/bfeca7a5-10d7-4b05-8659-e2006ea9e7b5" />
 
@@ -77,3 +77,5 @@ Karvinen, T. Verkkoon tunkeutuminen ja tiedustelu. 2026. Luettavissa: https://te
 Karvinen, T 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento. 3.11.2026.
 
 https://rfhub.se/en/compatibility
+
+https://github.com/merbanan/rtl_433/blob/ac1e4a8c5a36fb90e3b06c0f01cef00bb3b2614d/docs/IQ_FORMATS.md#file-name-meta-data
