@@ -86,7 +86,16 @@ Komentojen ajamisen jälkeen URH aukeaa:
 <img width="1915" height="1029" alt="kuva" src="https://github.com/user-attachments/assets/9d3e4004-84db-45da-9d82-16395423b10a" />
 
 Kuva 6. URH avattuna.
+
+Kun olin saanut URH:n auki latasin seuraavassa kohdassa analysoitavan tiedoston 1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s.
+
 # f) Yleiskuva
+
+Seuraavaksi avataan tiedosto 1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s URH:lla ja katsotaan hieman yleiskuvaa. Avattu tiedosto näyttää URH:ssa seuraavanlaiselle:
+
+<img width="1913" height="1023" alt="kuva" src="https://github.com/user-attachments/assets/c690bd68-1b84-4eae-9e98-8045999e0a05" />
+
+Kuva 7. Tiedosto avattuna URH:ssa.
 
 # g) Bittistä
 
