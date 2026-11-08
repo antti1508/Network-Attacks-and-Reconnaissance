@@ -38,9 +38,9 @@ Aloitin tämän tehtävän avaamalla rtl-433 ohjelmalla tiedoston Converted_433.
 
 Kuva 2. Tiedoston sisältö.
 
-Seuraavaksi tehtänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä joka näkyy ylempänä kuvassa. Avataan alkuun model-osiot kuvasta. Osioiden avaamiseen käytin lähteenä rtl_443:n omaa github-sivua: https://github.com/merbanan/rtl_433. 
+Seuraavaksi tehtävänannossa ohjeistettiin analysoimaan tiedoston Converted_433.92M_2000k.cs8 sisältöä, joka näkyy ylempänä kuvassa. Alkuun tarkastellaan tulosteen model-osioita, joiden avaamiseen käytettiin rtl_433-ohjelman dokumentaatiota (Merbanan 2024). 
 
-RF-HUB:n yhteensopivuusoppaan mukaan KlikAanKlikUit, Nexa ja Proove käyttävät keskenään samaa radioprotokollaa, minkä vuoksi yksi fyysinen lähetys laukaisee rtl_433-ohjelmassa useamman laitedekooderin peräkkäin samalla aikaleimalla. https://rfhub.se/en/compatibility
+RFhubin yhteensopivuusoppaan mukaan KlikAanKlikUit, Nexa ja Proove käyttävät keskenään samaa radioprotokollaa, minkä vuoksi yksi fyysinen lähetys laukaisee rtl_433-ohjelmassa useamman laitedekooderin peräkkäin samalla aikaleimalla (RFhub s.a.).
 
 Time-kohta kertoo tallennuksessa aikaleiman, jolloin laite on havaittu tallennuksen alettua.
 
@@ -77,7 +77,7 @@ $ sudo apt-get -y install pipx
 $ pipx install urh
 $ pipx ensurepath
 ```
-(Karvinen. 2026)
+(Karvinen. 2026a)
 
 Tämän jälkeen Ultimate Radio Hackerin saa käynnistettyä komennolla ```urh```.
 
@@ -109,23 +109,33 @@ Näytteen pituuden saa selville URH:sta, tämän näytteen pituus on 2.75 sekunt
 
 Kuva 8. Näytteen kesto kuvassa.
 
-
 # g) Bittistä
+
+Aloitin tutkimisen painamalla "Autodetect parameters" URH:n sisältä, se vaihtoi modulaatioksi ASK:n, joten tästä voisi päätellä että modullatio on ASK. Tämän jälkeen zoomasin signaalikuvaajaa, jotta voidaan selvittää yhden raakabitin kesto ajassa. Kuvassa zoomattu signaalikuvaaja & yhden raakabitin kesto:
+
+<img width="1914" height="1028" alt="kuva" src="https://github.com/user-attachments/assets/d0139a4d-b260-4a43-af4c-378794366f47" />
+
+Kuva 9. Signaalikuvaaja & raakabitin kesto.
+
+Yhden raakabitin kesto on noin 257 mikrosekuntia (257 µs). 257 mikrosekuntia on hyvin lyhyt aika, jos sitä verrataan ihmisen silmänräpäykseen, joka kestää keskimäärin noin 200 millisekuntia. Yksi raakabitti onkin kestoltaan noin 780 kertaa lyhyempi kuin silmänräpäys (BioNumbers s.a.).
 
 # h) Vapaaehtoinen: Sdr++
 
 # i) Vapaaehtoinen, vaikeahko: GNU Radio
 
 ## Lähteet
+BioNumbers s.a. Duration of a human eye blink. BioNumber ID 100706. Harvard Medical School. Luettavissa: https://bionumbers.hms.harvard.edu/bionumber.aspx?id=100706. Luettu: 8.11.2026.
 
-Karvinen, T. Verkkoon tunkeutuminen ja tiedustelu. 2026. Luettavissa: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/ Luettu: 6.11.2026.
+Karvinen, T. 2026a. Verkkoon tunkeutuminen ja tiedustelu. Verkkosivusto. Luettavissa: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/. Luettu: 6.11.2026.
 
-Karvinen, T 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento. 3.11.2026.
+Karvinen, T. 2026b. Verkkoon tunkeutuminen ja tiedustelu. Luento 3.11.2026. Haaga-Helia ammattikorkeakoulu.
 
-https://rfhub.se/en/compatibility
+Merbanan 2024. rtl_433: IQ_FORMATS.md – File name meta data. GitHub. Luettavissa: https://github.com/merbanan/rtl_433/blob/ac1e4a8c5a36fb90e3b06c0f01cef00bb3b2614d/docs/IQ_FORMATS.md#file-name-meta-data. Luettu: 8.11.2026.
 
-https://github.com/merbanan/rtl_433/blob/ac1e4a8c5a36fb90e3b06c0f01cef00bb3b2614d/docs/IQ_FORMATS.md#file-name-meta-data
+Mozilla 2024. Hash function. MDN Web Docs Glossary. Luettavissa: https://developer.mozilla.org/en-US/docs/Glossary/Hash_function. Luettu: 8.11.2026.
 
-Mozilla. 2024. Hash function – MDN Web Docs Glossary. Saatavilla: https://developer.mozilla.org/en-US/docs/Glossary/Hash_function
+Pohl, J. s.a. Universal Radio Hacker (URH). GitHub. Luettavissa: https://github.com/jopohl/urh. Luettu: 8.11.2026.
 
-Wikipedia. 2024. Tiivistefunktio. Saatavilla: https://fi.wikipedia.org/wiki/Tiivistefunktio (Tekstiviite: (Wikipedia. 2024))
+RFhub s.a. Compatibility. Luettavissa: https://rfhub.se/en/compatibility. Luettu: 8.11.2026.
+
+Wikipedia 2024. Tiivistefunktio. Luettavissa: https://fi.wikipedia.org/wiki/Tiivistefunktio. Luettu: 8.11.2026.
