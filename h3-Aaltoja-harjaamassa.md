@@ -103,6 +103,11 @@ Itse tiedoston nimestä ($\textcolor{blue}{\mathtt{1\text{-}on\text{-}on\text{-}
 - **Millä taajuudella:** Merkintä $\textcolor{darkorange}{\mathtt{433\\_912MHz}}$ kertoo, että keskitaajuus on 433,912 MHz.
 - **Näytteenottotaajuus ja laite:** Tallennus on tehty $\textcolor{blue}{\mathtt{HackRF}}$ -ohjelmistoradiolla, näytteenottotaajuus on $\textcolor{darkorange}{\mathtt{2MSps}}$
 
+Näytteen pituuden saa selville URH:sta, tämän näytteen pituus on 2.75 sekuntia. Alla kuva siitä mistä pituuden löytää, toisena vaihtoehtona on painaa Ctlr + A joka valitsee koko näytteen ja näyttää kokonaiskeston pääruudulla:
+
+<img width="1904" height="881" alt="kuva" src="https://github.com/user-attachments/assets/0808ef25-b23d-468f-9bcb-6a268e1942c6" />
+
+Kuva 8. Näytteen kesto kuvassa.
 
 
 # g) Bittistä
