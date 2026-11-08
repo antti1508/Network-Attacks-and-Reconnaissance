@@ -134,12 +134,12 @@ Karvinen, T. 2026a. Verkkoon tunkeutuminen ja tiedustelu. Verkkosivusto. Luettav
 
 Karvinen, T. 2026b. Verkkoon tunkeutuminen ja tiedustelu. Luento 3.11.2026. Haaga-Helia ammattikorkeakoulu.
 
-Merbanan 2024. rtl_433: IQ_FORMATS.md – File name meta data. GitHub. Luettavissa: https://github.com/merbanan/rtl_433/blob/ac1e4a8c5a36fb90e3b06c0f01cef00bb3b2614d/docs/IQ_FORMATS.md#file-name-meta-data. Luettu: 8.11.2026.
+Merbanan 2024. rtl_433: IQ_FORMATS.md – File name meta data. GitHub. Luettavissa: https://github.com/merbanan/rtl_433/blob/ac1e4a8c5a36fb90e3b06c0f01cef00bb3b2614d/docs/IQ_FORMATS.md#file-name-meta-data. Luettu: 7.11.2026.
 
 Mozilla 2024. Hash function. MDN Web Docs Glossary. Luettavissa: https://developer.mozilla.org/en-US/docs/Glossary/Hash_function. Luettu: 8.11.2026.
 
 Pohl, J. s.a. Universal Radio Hacker (URH). GitHub. Luettavissa: https://github.com/jopohl/urh. Luettu: 8.11.2026.
 
-RFhub s.a. Compatibility. Luettavissa: https://rfhub.se/en/compatibility. Luettu: 8.11.2026.
+RFhub s.a. Compatibility. Luettavissa: https://rfhub.se/en/compatibility. Luettu: 7.11.2026.
 
 Wikipedia 2024. Tiivistefunktio. Luettavissa: https://fi.wikipedia.org/wiki/Tiivistefunktio. Luettu: 8.11.2026.
