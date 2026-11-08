@@ -111,13 +111,17 @@ Kuva 8. Näytteen kesto kuvassa.
 
 # g) Bittistä
 
-Aloitin tutkimisen painamalla "Autodetect parameters" URH:n sisältä, se vaihtoi modulaatioksi ASK:n, joten tästä voisi päätellä että modullatio on ASK. Tämän jälkeen zoomasin signaalikuvaajaa, jotta voidaan selvittää yhden raakabitin kesto ajassa. Kuvassa zoomattu signaalikuvaaja & yhden raakabitin kesto:
+Aloitin tutkimisen painamalla URH:ssa Autodetect parameters, joka tunnisti modulaatioksi ASK:n (Amplitude Shift Keying). Valinta on oikea, sillä kyseessä on OOK-tyyppinen (On-Off Keying) amplitudimodulaatio, jossa kantoaaltoa kytketään yksinkertaisesti päälle ja pois. Asetin datan esitysmuodoksi bitit (Show data as: Bits).
+
+Kuvassa zoomattu signaalikuvaaja & yhden raakabitin kesto:
 
 <img width="1914" height="1028" alt="kuva" src="https://github.com/user-attachments/assets/d0139a4d-b260-4a43-af4c-378794366f47" />
 
 Kuva 9. Signaalikuvaaja & raakabitin kesto.
 
 Yhden raakabitin kesto on noin 257 mikrosekuntia (257 µs). 257 mikrosekuntia on hyvin lyhyt aika, jos sitä verrataan ihmisen silmänräpäykseen, joka kestää keskimäärin noin 200 millisekuntia. Yksi raakabitti onkin kestoltaan noin 780 kertaa lyhyempi kuin silmänräpäys (BioNumbers s.a.).
+
+On kuitenkin huomattava, että signaalissa käytetään line encodingia, joten nämä raakabitit eivät vielä suoraan edusta laitteen loogista dataa, vaan lopullisen viestin muodostamiseen tarvitaan koodauksen purku (decoding).
 
 # h) Vapaaehtoinen: Sdr++
 
