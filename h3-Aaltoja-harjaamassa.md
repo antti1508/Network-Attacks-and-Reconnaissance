@@ -87,7 +87,11 @@ Komentojen ajamisen jälkeen URH aukeaa:
 
 Kuva 6. URH avattuna.
 
-Kun olin saanut URH:n auki latasin seuraavassa kohdassa analysoitavan tiedoston 1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s.
+Kun olin saanut URH:n auki latasin seuraavassa kohdassa analysoitavan tiedoston 1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s. Itse tiedoston nimestä saa kohtuullisen paljon jo irti, tietoja kuten:
+
+* Milloin nauhoitettu: Nimessä oleva aikaleima 20250412_113805 tarkoittaa, että näyte on nauhoitettu 12.4.2025 klo 11:38:05
+* Millä taajuudella: Merkintä 433_912MHz kertoo, että keskitaajuus on 433,912 MHz
+* Näytteenottotaajuus ja laite: Tallennus on tehty HackRF-ohjelmistoradiolla, näytteenottotaajuus on 2 MSps ja kaistanleveys 2 MHz.
 
 # f) Yleiskuva
 
