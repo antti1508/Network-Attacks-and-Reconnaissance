@@ -80,6 +80,12 @@ $ pipx ensurepath
 (Karvinen. 2026)
 
 Tämän jälkeen Ultimate Radio Hackerin saa käynnistettyä komennolla ```urh```.
+
+Komentojen ajamisen jälkeen URH aukeaa:
+
+<img width="1915" height="1029" alt="kuva" src="https://github.com/user-attachments/assets/9d3e4004-84db-45da-9d82-16395423b10a" />
+
+Kuva 6. URH avattuna.
 # f) Yleiskuva
 
 # g) Bittistä
