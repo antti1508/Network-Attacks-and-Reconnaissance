@@ -66,7 +66,7 @@ Nopeasti vilkaistuna tämä tiedosto näyttäisi olevan samanlainen kuin kohdass
 
 Kuva 5. Tiedostojen sha256-hashit.
 
-Kuvasta 5 nähdään, että tiedostojen SHA-256-hashit ovat täysin samat. SHA-256 laskee tiedoston sisällöstä yksilöllisen tiivisteen riippumatta tiedoston nimestä tai päätteestä. Teoriassa on olemassa pieni riski sille, että kaksi eri tiedostoa tuottaisi vahingossa saman hash-arvon, mitä kutsutaan törmäykseksi (collision). SHA-256:ssa mahdollisia vaihtoehtoja on kuitenkin niin valtava määrä, että törmäysriski on käytännössä olematon, joten tiedostot ovat lähes 100 % varmuudella sisällöltään täysin samat (Mozilla. 2024).
+Kuvasta 5 nähdään, että tiedostojen SHA-256-hashit ovat täysin samat. SHA-256 laskee tiedoston sisällöstä yksilöllisen tiivisteen riippumatta tiedoston nimestä tai päätteestä. Teoriassa on olemassa pieni riski sille, että kaksi eri tiedostoa tuottaisi vahingossa saman hash-arvon, mitä kutsutaan törmäykseksi (collision). SHA-256:ssa mahdollisia vaihtoehtoja on kuitenkin niin valtava määrä, että törmäysriski on käytännössä olematon, joten tiedostot ovat lähes varmasti sisällöltään täysin samat (Mozilla. 2024).
 
 # e) Ultimate
 
