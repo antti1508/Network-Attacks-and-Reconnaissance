@@ -60,8 +60,26 @@ Jotta tiedosto saadaan toimimaan rtl_443-ohjelmalla tulee tiedostotyyppiä muutt
 
 Kuva 4. Muunnettu tiedosto avattuna rtl_433-ohjelmalla.
 
+Nopeasti vilkaistuna tämä tiedosto näyttäisi olevan samanlainen kuin kohdassa C. Tarkastellaan asiaa hieman tarkemmin, minulle tuli mieleen tarkistaa outputin lisäksi tiedostojen sha256 hashit komennolla ```sha256sum <tiedostonimi>```.  
+
+<img width="1785" height="611" alt="kuva" src="https://github.com/user-attachments/assets/20099aff-289a-48a0-9875-55c2c3c43aba" />
+
+Kuva 5. Tiedostojen sha256-hashit.
+
+Kuvasta 5 nähdään, että tiedostojen SHA-256-hashit ovat täysin samat. SHA-256 laskee tiedoston sisällöstä yksilöllisen tiivisteen riippumatta tiedoston nimestä tai päätteestä. Teoriassa on olemassa pieni riski sille, että kaksi eri tiedostoa tuottaisi vahingossa saman hash-arvon, mitä kutsutaan törmäykseksi (collision). SHA-256:ssa mahdollisia vaihtoehtoja on kuitenkin niin valtava määrä, että törmäysriski on käytännössä olematon, joten tiedostot ovat lähes 100 % varmuudella sisällöltään täysin samat (Mozilla. 2024).
+
 # e) Ultimate
 
+Aloitetaan Ultimate Radio Hackerin asennus Teron antamalla tavalla, ajetaan seuraavanlaiset komennot:
+```console
+$ sudo apt-get update
+$ sudo apt-get -y install pipx
+$ pipx install urh
+$ pipx ensurepath
+```
+(Karvinen. 2026)
+
+Tämän jälkeen Ultimate Radio Hackerin saa käynnistettyä komennolla ```urh```.
 # f) Yleiskuva
 
 # g) Bittistä
@@ -79,3 +97,7 @@ Karvinen, T 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento. 3.11.2026.
 https://rfhub.se/en/compatibility
 
 https://github.com/merbanan/rtl_433/blob/ac1e4a8c5a36fb90e3b06c0f01cef00bb3b2614d/docs/IQ_FORMATS.md#file-name-meta-data
+
+Mozilla. 2024. Hash function – MDN Web Docs Glossary. Saatavilla: https://developer.mozilla.org/en-US/docs/Glossary/Hash_function
+
+Wikipedia. 2024. Tiivistefunktio. Saatavilla: https://fi.wikipedia.org/wiki/Tiivistefunktio (Tekstiviite: (Wikipedia. 2024))
