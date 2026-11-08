@@ -97,11 +97,11 @@ Seuraavaksi avataan tiedosto 1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-
 
 Kuva 7. Tiedosto avattuna URH:ssa.
 
-Itse tiedoston nimestä ($\textcolor{blue}{\texttt{1-on-on-on-HackRF}}$ - $\textcolor{teal}{\texttt{20250412\_113805}}$ - $\textcolor{darkorange}{\texttt{433\_912MHz-2MSps-2MHz}}$`.complex16s`) saa kohtuullisen paljon jo irti, tietoja kuten:
+Itse tiedoston nimestä ($\textcolor{blue}{\mathtt{1\text{-}on\text{-}on\text{-}on\text{-}HackRF}}$ - $\textcolor{teal}{\mathtt{20250412\\_113805}}$ - $\textcolor{darkorange}{\mathtt{433\\_912MHz\text{-}2MSps\text{-}2MHz}}$`.complex16s`) saa kohtuullisen paljon jo irti, tietoja kuten:
 
-- **Milloin nauhoitettu:** Nimessä oleva aikaleima $\textcolor{teal}{\texttt{20250412\_113805}}$ tarkoittaa, että näyte on nauhoitettu 12.4.2025 klo 11:38:05.
-- **Millä taajuudella:** Merkintä $\textcolor{darkorange}{\texttt{433\_912MHz}}$ kertoo, että keskitaajuus on 433,912 MHz.
-- **Näytteenottotaajuus ja laite:** Tallennus on tehty $\textcolor{blue}{\texttt{HackRF}}$ -ohjelmistoradiolla, näytteenottotaajuus on $\textcolor{darkorange}{\texttt{2MSps}}$ ja kaistanleveys $\textcolor{darkorange}{\texttt{2MHz}}$.
+- **Milloin nauhoitettu:** Nimessä oleva aikaleima $\textcolor{teal}{\mathtt{20250412\\_113805}}$ tarkoittaa, että näyte on nauhoitettu 12.4.2025 klo 11:38:05.
+- **Millä taajuudella:** Merkintä $\textcolor{darkorange}{\mathtt{433\\_912MHz}}$ kertoo, että keskitaajuus on 433,912 MHz.
+- **Näytteenottotaajuus ja laite:** Tallennus on tehty $\textcolor{blue}{\mathtt{HackRF}}$ -ohjelmistoradiolla, näytteenottotaajuus on $\textcolor{darkorange}{\mathtt{2MSps}}$
 
 
 
