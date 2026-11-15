@@ -2,7 +2,7 @@
 
 # a) Tarkastele käytössäsi olevia RFID tuotteita, mieti miten hyvin olet suojautunut RFID urkinnalta?
 
-RFID (Radio Frequency Identification) ja sen lähilukuun tarkoitettu alalaji NFC (Near Field Communication) ovat mukana lähes jokaisen arjessa. Kävin läpi lompakkoni, avaimeni ja laitteeni, sieltä löytyy luultavasti ainakin osa seuraavista:
+RFID (Radio Frequency Identification) ja sen lähilukuun tarkoitettu alalaji NFC (Near Field Communication) ovat mukana lähes jokaisen arjessa. Kävin läpi lompakkoni, avaimeni ja laitteeni, sieltä löytyi ainakin osa seuraavista:
 
 * Maksukortit (lähimaksu): Pankkikortti
 * Kulunvalvonta-avaimet: Työpaikan lätkät
