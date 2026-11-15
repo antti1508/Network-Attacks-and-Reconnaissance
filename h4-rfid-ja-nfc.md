@@ -32,4 +32,6 @@ Karvinen, T. 2026. Verkkoon tunkeutuminen ja tiedustelu. Verkkosivusto. Luettavi
 
 Karygiannis, T., Eydt, B., Barber, G., Bunn, L. & Phillips, T. 2007. Guidelines for Securing Radio Frequency Identification (RFID) Systems. NIST Special Publication 800-98. National Institute of Standards and Technology. Luettavissa: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-98.pdf. Luettu: 15.11.2026.
 
-Wikipedia. 2025. Smart card application protocol data unit. Luettavissa: https://en.wikipedia.org/wiki/Smart_card_application_protocol_data_unit. Luettu 15.11.2026.
+Wikipedia (2025). Smart card application protocol data unit. Päivitetty 28.12.2025. Saatavilla: https://en.wikipedia.org/wiki/Smart_card_application_protocol_data_unit. Luettu 15.11.2026.
+
+Naraine, R. (2024). Major Backdoor in Millions of RFID Cards Allows Instant Cloning. SecurityWeek, 20.8.2024. Saatavilla: https://www.securityweek.com/major-backdoor-in-millions-of-rfid-cards-allows-instant-cloning/. Luettu 15.11.2026.
