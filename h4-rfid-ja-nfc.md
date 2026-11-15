@@ -29,7 +29,7 @@ Tutkimuksen kohteena oli alun perin Philipsin (nykyisin NXP Semiconductors) vuon
 
 Tutkiessaan FM11RF08S-sirun suojausmekanismeja (static encrypted nonce) Teuwen kehitti aluksi menetelmän, jolla kortin salausavaimet pystyttiin murtamaan muutamassa minuutissa, mikäli samaa avainta oli käytetty uudelleen vähintään kolmessa sektorissa tai kolmessa kortissa. Jatkotutkimuksissa paljastui kuitenkin varsinainen laitteistotason takaovi (hardware backdoor), joka mahdollistaa todentamisen tuntemattomalla salausavaimella (Naraine, 2024).
 
-Takaoven vuoksi kuka tahansa yleisavaimen tunteva taho pystyy ohittamaan kortin suojaukset, lukemaan ja muokkaamaan kortin sisältöä sekä kloonaamaan kortin täydellisesti – vaikka kortin käyttäjäkohtaiset salausavaimet olisi määritetty yksilöllisesti ja oikeaoppisesti (Naraine, 2024)
+Takaoven vuoksi kuka tahansa yleisavaimen tunteva taho pystyy ohittamaan kortin suojaukset, lukemaan ja muokkaamaan kortin sisältöä sekä kloonaamaan kortin täydellisesti, vaikka kortin käyttäjäkohtaiset salausavaimet olisi määritetty yksilöllisesti ja oikeaoppisesti (Naraine, 2024)
 
 ## Lähteet: 
 Apple Inc. 2026. Apple Payn suojaus ja tietosuoja. Verkkosivusto. Luettavissa: https://support.apple.com/fi-fi/101554. Luettu: 15.11.2026.
