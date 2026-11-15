@@ -1,9 +1,9 @@
 # h4 - NFC ja RFID
 
-## a) Tarkastele käytössäsi olevia RFID tuotteita, mieti miten hyvin olet suojautunut RFID urkinnalta?
+# a) Tarkastele käytössäsi olevia RFID tuotteita, mieti miten hyvin olet suojautunut RFID urkinnalta?
 
-## b) Tutustu APDU komentojen rakenteeseen (voit käyttää tekoälyä tutustumiseen)
+# b) Tutustu APDU komentojen rakenteeseen (voit käyttää tekoälyä tutustumiseen)
 
-## c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. 
+# c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. 
 
-### Lähteet: 
+## Lähteet: 
