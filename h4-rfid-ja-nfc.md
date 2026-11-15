@@ -5,7 +5,7 @@
 RFID (Radio Frequency Identification) ja sen lähilukuun tarkoitettu alalaji NFC (Near Field Communication) ovat mukana lähes jokaisen arjessa. Kävin läpi lompakkoni, avaimeni ja laitteeni, sieltä löytyy luultavasti ainakin osa seuraavista:
 
 * Maksukortit (lähimaksu): Pankkikortti
-* Kulunvalvonta-avaimet: Työpaikan lätkä
+* Kulunvalvonta-avaimet: Työpaikan lätkät
 * Älypuhelin: Lähimaksuominaisuudet (Apple Pay)
 * Muut: Kirjastokortti
 
