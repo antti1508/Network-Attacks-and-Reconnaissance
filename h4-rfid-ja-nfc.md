@@ -17,7 +17,9 @@ Omassa arjessani riski korostuu julkisilla paikoilla liikuttaessa, sillä fyysis
 
 # b) Tutustu APDU komentojen rakenteeseen (voit käyttää tekoälyä tutustumiseen)
 
-Aloitin tehtävän kysymällä Googlen Gemini Hydrogen 4 mallilta kysymällä APDU komentojen rakentamisesta.
+Aloitin tehtävän kysymällä Googlen Gemini-tekoälymallilta APDU-komentojen rakentamisesta ja perusrakenteesta. Tekoälyn tuottaman yhteenvedon pohjalta perehdyin tarkemmin siihen, miten kortinlukijan ja älykortin välinen tietoliikenne toimii ISO/IEC 7816-4 -standardin mukaisesti.
+
+Älykorttien yhteydessä APDU (Application Protocol Data Unit) on kortinlukijan ja älykortin välinen tietoliikenneyksikkö. APDU:n rakenne on määritelty ISO/IEC 7816-4 -standardissa (Organization, security and commands for interchange). Kortinlukijan lähettämä komentokehys sisältää pakollisen 4 tavun otsikon (Header) sekä valinnaisesti 0–65 535 tavua dataa. Älykortin lukijalle palauttama vastauskehys sisältää 0–65 536 tavua dataa sekä 2 pakollista tilatavua. (Wikipedia, 2025).
 
 # c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. 
 
@@ -29,3 +31,5 @@ Iso-Anttila, L. 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento 10.11.2026. H
 Karvinen, T. 2026. Verkkoon tunkeutuminen ja tiedustelu. Verkkosivusto. Luettavissa: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/. Luettu: 15.11.2026.
 
 Karygiannis, T., Eydt, B., Barber, G., Bunn, L. & Phillips, T. 2007. Guidelines for Securing Radio Frequency Identification (RFID) Systems. NIST Special Publication 800-98. National Institute of Standards and Technology. Luettavissa: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-98.pdf. Luettu: 15.11.2026.
+
+Wikipedia. 2025. Smart card application protocol data unit. Luettavissa: https://en.wikipedia.org/wiki/Smart_card_application_protocol_data_unit. Luettu 15.11.2026.
