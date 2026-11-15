@@ -20,10 +20,10 @@ Omassa arjessani riski korostuu julkisilla paikoilla liikuttaessa, sillä fyysis
 # c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. 
 
 ## Lähteet: 
+Apple Inc. 2026. Apple Payn suojaus ja tietosuoja. Verkkosivusto. Luettavissa: https://support.apple.com/fi-fi/101554. Luettu: 15.11.2026.
+
+Iso-Anttila, L. 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento 10.11.2026. Haaga-Helia ammattikorkeakoulu.
+
 Karvinen, T. 2026. Verkkoon tunkeutuminen ja tiedustelu. Verkkosivusto. Luettavissa: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/. Luettu: 15.11.2026.
 
-Iso-anttila, L. 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento 10.11.2026. Haaga-Helia ammattikorkeakoulu.
-
-https://support.apple.com/fi-fi/101554
-
-https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-98.pdf
+Karygiannis, T., Eydt, B., Barber, G., Bunn, L. & Phillips, T. 2007. Guidelines for Securing Radio Frequency Identification (RFID) Systems. NIST Special Publication 800-98. National Institute of Standards and Technology. Luettavissa: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-98.pdf. Luettu: 15.11.2026.
