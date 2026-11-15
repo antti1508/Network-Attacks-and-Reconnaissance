@@ -34,7 +34,7 @@ Takaoven vuoksi kuka tahansa yleisavaimen tunteva taho pystyy ohittamaan kortin 
 ## Lähteet: 
 Apple Inc. 2026. Apple Payn suojaus ja tietosuoja. Verkkosivusto. Luettavissa: https://support.apple.com/fi-fi/101554. Luettu: 15.11.2026.
 
-Google (2026). Gemini (15.11.2026 Hydrogen 4). Saatavilla: https://gemini.google.com (Käytetty 15.11.2026).
+Google (2026). Gemini (15.11.2026 Hydrogen 4). Saatavilla: https://gemini.google.com. Käytetty 15.11.2026.
 
 Iso-Anttila, L. 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento 10.11.2026. Haaga-Helia ammattikorkeakoulu.
 
