@@ -21,7 +21,11 @@ Aloitin tehtävän kysymällä Googlen Gemini-tekoälymallilta APDU-komentojen r
 
 Älykorttien yhteydessä APDU (Application Protocol Data Unit) on kortinlukijan ja älykortin välinen tietoliikenneyksikkö. APDU:n rakenne on määritelty ISO/IEC 7816-4 -standardissa (Organization, security and commands for interchange). Kortinlukijan lähettämä komentokehys sisältää pakollisen 4 tavun otsikon (Header) sekä valinnaisesti 0–65 535 tavua dataa. Älykortin lukijalle palauttama vastauskehys sisältää 0–65 536 tavua dataa sekä 2 pakollista tilatavua. (Wikipedia, 2025).
 
-# c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. 
+# c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit.
+
+Tutustuin älykorttien tietoturvaan perehtymällä SecurityWeek-sivuston artikkeliin (Major Backdoor in Millions of RFID Cards Allows Instant Cloning), joka käsittelee ranskalaisen tietoturvayritys Quarkslabin tutkijan Philippe Teuwenin löytämää vakavaa laitteistotason takaovea yleisissä RFID-kulkukorteissa (Naraine, 2024).
+
+
 
 ## Lähteet: 
 Apple Inc. 2026. Apple Payn suojaus ja tietosuoja. Verkkosivusto. Luettavissa: https://support.apple.com/fi-fi/101554. Luettu: 15.11.2026.
