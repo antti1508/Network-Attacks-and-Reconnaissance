@@ -25,7 +25,11 @@ Aloitin tehtävän kysymällä Googlen Gemini-tekoälymallilta APDU-komentojen r
 
 Tutustuin älykorttien tietoturvaan perehtymällä SecurityWeek-sivuston artikkeliin (Major Backdoor in Millions of RFID Cards Allows Instant Cloning), joka käsittelee ranskalaisen tietoturvayritys Quarkslabin tutkijan Philippe Teuwenin löytämää vakavaa laitteistotason takaovea yleisissä RFID-kulkukorteissa (Naraine, 2024).
 
+Tutkimuksen kohteena oli alun perin Philipsin (nykyisin NXP Semiconductors) vuonna 1994 julkaisema MIFARE Classic -korttiperhe, jota käytetään laajasti muun muassa julkisessa liikenteessä, toimistojen kulunvalvonnassa sekä hotellien avainkorteissa maailmanlaajuisesti. Koska alkuperäisiin MIFARE Classic -kortteihin on vuosien saatossa löydetty useita haavoittuvuuksia, kiinalainen siruvalmistaja Shanghai Fudan Microelectronics Group julkaisi vuonna 2020 parannellun FM11RF08S-sirun. Sen tarkoituksena oli estää tunnetut ns. card-only-hyökkäykset, joissa hyökkääjä pystyy murtamaan ja kloonaamaan kortin pelkästään pääsemällä lähelle korttia ilman yhteyttä varsinaiseen kortinlukijaan (Naraine, 2024).
 
+Tutkiessaan FM11RF08S-sirun suojausmekanismeja (static encrypted nonce) Teuwen kehitti aluksi menetelmän, jolla kortin salausavaimet pystyttiin murtamaan muutamassa minuutissa, mikäli samaa avainta oli käytetty uudelleen vähintään kolmessa sektorissa tai kolmessa kortissa. Jatkotutkimuksissa paljastui kuitenkin varsinainen laitteistotason takaovi (hardware backdoor), joka mahdollistaa todentamisen tuntemattomalla salausavaimella (Naraine, 2024).
+
+Takaoven vuoksi kuka tahansa yleisavaimen tunteva taho pystyy ohittamaan kortin suojaukset, lukemaan ja muokkaamaan kortin sisältöä sekä kloonaamaan kortin täydellisesti – vaikka kortin käyttäjäkohtaiset salausavaimet olisi määritetty yksilöllisesti ja oikeaoppisesti (Naraine, 2024)
 
 ## Lähteet: 
 Apple Inc. 2026. Apple Payn suojaus ja tietosuoja. Verkkosivusto. Luettavissa: https://support.apple.com/fi-fi/101554. Luettu: 15.11.2026.
