@@ -7,3 +7,5 @@
 # c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. 
 
 ## Lähteet: 
+
+Iso-anttila, L. 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento 10.11.2026. Haaga-Helia ammattikorkeakoulu.
