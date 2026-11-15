@@ -17,6 +17,8 @@ Omassa arjessani riski korostuu julkisilla paikoilla liikuttaessa, sillä fyysis
 
 # b) Tutustu APDU komentojen rakenteeseen (voit käyttää tekoälyä tutustumiseen)
 
+Aloitin tehtävän kysymällä Googlen Gemini Hydrogen 4 mallilta kysymällä APDU komentojen rakentamisesta.
+
 # c) Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. 
 
 ## Lähteet: 
