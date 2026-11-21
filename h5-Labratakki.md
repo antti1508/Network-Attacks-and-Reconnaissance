@@ -2,7 +2,11 @@
 
 # a) Aja tunnilla esitetty ARP hyökkäys ja tutki, miten se toimii.
 
-Tässä harjoituksessa käytetään ympäristönä Larin mininet virtuaalikone tiedostoa ja VMware alustaa (fuck broadcom). "Pienten" ongelmien jälkeen sain VMwaren ladattua ja virtuaalikoneen päälle.
+Tässä harjoituksessa käytetään ympäristönä Larin mininet virtuaalikone tiedostoa ja VMware alustaa (fuck broadcom). "Pienten" ongelmien jälkeen sain VMwaren ladattua ja virtuaalikoneen päälle. Noin parin tunnin säätämisen jälkeen sain infran pystyyn :D.
+
+<img width="1524" height="412" alt="kuva" src="https://github.com/user-attachments/assets/75969d48-f2ad-4210-8860-3c8394a86a63" />
+
+Kuva 1. Mininet toiminnassa.
 
 Seuraavaksi seurasin tunnilta saatuja ohjeita ja ajoin ARP-hyökkäyksen ohjeiden mukaisesti.
 
