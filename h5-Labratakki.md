@@ -23,7 +23,7 @@ Seuraavaksi seurasin tunnilta saatuja ohjeita ja ajoin ARP-hyökkäyksen ohjeide
 * **`Node: h3> sshesame -port 22 -listen_address 0.0.0.0`**: Käynnistää SSH-hunajapurkin (valepalvelimen), joka ottaa vastaan kaapatut SSH-yhteydet ja tallentaa kirjautumisyritykset/komennot.
 * **`Node: h3> python3 ./arp_poison.py`**: Käynnistää Python-skriptin, joka lähettää väärennettyjä ARP-vastauksia ja uskottelee `h1`:lle ja `h2`:lle, että `h3` on niiden kohde (MAC-osoitteiden väärennys).
 * **`Node: h1> ssh h2`**: `h1` yrittää ottaa SSH-yhteyden `h2`-koneeseen, mutta ARP-myrkytyksen ja `iptables`-ohjauksen vuoksi yhteys päätyykin salaa hyökkääjän (`h3`) `sshesame`-valepalvelimelle.
-* * **`Node: h1> ssh-keygen –R h2`**: Poistaa `h2`-palvelimen aiemmin tallennetun julkisen avaimen `h1`:n `known_hosts`-tiedostosta, jotta yhteys ei esty suoraan avainristiriidan vuoksi.
+* **`Node: h1> ssh-keygen –R h2`**: Poistaa `h2`-palvelimen aiemmin tallennetun julkisen avaimen `h1`:n `known_hosts`-tiedostosta, jotta yhteys ei esty suoraan avainristiriidan vuoksi.
 * **`Node: h1> ssh h2`**: `h1` ottaa uudelleen SSH-yhteyden `h2`-osoitteeseen, mutta liikenne ohjautuu ARP-myrkytyksen vuoksi hyökkääjän `sshesame`-hunajapurkille.
 * **`Warning: the ED25519 host key for 'h2' differs...`**: SSH-asiakas varoittaa, että palvelimen sormenjälki on muuttunut (koska vastassa on nyt `h3` eikä oikea `h2`), mikä on klassinen merkki Man-in-the-Middle-hyökkäyksestä.
 * **`Are you sure you want to continue connecting (yes/no)? Yes`**: Käyttäjä ohittaa varoituksen ja hyväksyy hyökkääjän väärennetyn palvelinavaimen.
