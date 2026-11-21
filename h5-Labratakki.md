@@ -2,7 +2,7 @@
 
 # a) Aja tunnilla esitetty ARP hyökkäys ja tutki, miten se toimii.
 
-Tässä harjoituksessa käytetään ympäristönä Larin mininet virtuaalikone tiedostoa ja VMware alustaa (fuck broadcom). Pienten ongelmien jälkeen sain VMwaren ladattua ja virtuaalikoneen päälle.
+Tässä harjoituksessa käytetään ympäristönä Larin mininet virtuaalikone tiedostoa ja VMware alustaa (fuck broadcom). "Pienten" ongelmien jälkeen sain VMwaren ladattua ja virtuaalikoneen päälle.
 
 # b) Samassa hakemistossa on myös ICMP Spoofing ja TCP Session Hijacking. Aja molemmat labrat läpi ja kerro, miten molemmat tekniikat toimivat.
 
