@@ -113,6 +113,15 @@ Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja pro
 
 # c) Hakemistossa 02-SDN-DDos_Simulation tryout-kansiossa on työkalut, jotta voit ajaa TCP SYN-Flood-hyökkäyksen turvallisesti. Kirjoita, miten ajoit hyökkäyksen ja miten kyseinen hyökkäys toimii.
 
+<img width="2424" height="1345" alt="kuva" src="https://github.com/user-attachments/assets/2380cdae-32df-4365-aaa8-382b2f0fe96d" />
+
+Kuva 6. DDoS Flooding -simulaatio ja verkkoliikenteen kaappaus Wiresharkissa.
+
+Kuvakaappaukseen on korostettu kolme keskeistä kohtaa:
+- **Punainen laatikko (vasen pääteikkuna):** Näyttää käynnissä olevan Mininet-simulaation (`tree_topology.py`), joka ajaa peräkkäisiä hyökkäysepisodeja (*Episode 5–11*), joissa yksi host lähettää DDoS-tulvaliikennettä (*is attacking*) samalla kun toinen host lähettää normaalia liikennettä (*is sending normal requests*).
+- **Vihreä laatikko (Wiresharkin pakettilista):** Osoittaa kaapattua verkonsisäistä DDoS-hyökkäysliikennettä, jossa hyökkääjä (`10.0.0.4`) lähettää peräkkäisiä TCP-paketteja kasvavista lähdeporteista (`2649–2654`) kohdeosoitteeseen `10.0.0.8` (portti `8`), sekä kohteen lähettämän `RST, ACK` -vastauksen (punaisella korostettu rivi). Lisäksi listassa näkyy verkon osoitteenselvitykseen liittyviä ARP-kyselyitä.
+- **Sininen laatikko (Wiresharkin alareuna):** Todentaa, että kaappaus suoritettiin suoraan Mininet-kytkimen `s4-eth2`-verkkoliitännältä (`s4-eth2: <live capture in progress>`).
+
 ## Lähteet
 Iso-Anttila, L. 2026a. 03-mininet. Oppimateriaali. Haaga-Helia ammattikorkeakoulu. Luettavissa: https://hhmoodle.haaga-helia.fi/pluginfile.php/5055842/mod_resource/content/1/03-mininet.pdf. Luettu: 22.11.2026.
 
