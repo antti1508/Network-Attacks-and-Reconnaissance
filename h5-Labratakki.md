@@ -54,7 +54,7 @@ Kuvassa värit kertovat seuraavaa:
 
 ARP-protokolla (Address Resolution Protocol) on tilaton eikä se todenna viestien lähettäjää, minkä vuoksi lähiverkon laitteet päivittävät ARP-välimuistinsa sokeasti viimeisimmän vastaanotetun ARP-vastauksen (`is-at`) perusteella (MITRE 2024b). Hyökkääjä (`h3`) hyödyntää tätä luottamusta lähettämällä jatkuvasti väärennettyjä ARP-vastauksia sekä `h1`:lle (väittäen olevansa `h2`) että `h2`:lle (väittäen olevansa `h1`) (MITRE 2024b).
 
-Tämän seurauksena molempien uhrien ARP-tauluihin tallentuu `h3`:n MAC-osoite vastapuolen IP-osoitteen kohdalle, ja kaikki niiden välinen liikenne alkaa kulkea `h3`:n kautta (Adversary-in-the-Middle / Man-in-the-Middle) (MITRE 2024b). Koska `h3`:ssa on kytketty päälle IP-pakettien edelleenlähetys (`ip_forward=1`) ja `iptables`-sääntö ohjaa portin 22 liikenteen paikalliselle `sshesame`-hunajapurkille, `h1`:n SSH-yhteys päätyy hyökkääjän valepalvelimelle (Iso-Anttila 2026b).
+Tämän seurauksena molempien uhrien ARP-tauluihin tallentuu `h3`:n MAC-osoite vastapuolen IP-osoitteen kohdalle, ja kaikki niiden välinen liikenne alkaa kulkea `h3`:n kautta (Man-in-the-Middle) (MITRE 2024b). Koska `h3`:ssa on kytketty päälle IP-pakettien edelleenlähetys (`ip_forward=1`) ja `iptables`-sääntö ohjaa portin 22 liikenteen paikalliselle `sshesame`, `h1`:n SSH-yhteys päätyy hyökkääjän valepalvelimelle (Iso-Anttila 2026b).
 
 # b) Samassa hakemistossa on myös ICMP Spoofing ja TCP Session Hijacking. Aja molemmat labrat läpi ja kerro, miten molemmat tekniikat toimivat.
 
@@ -64,9 +64,9 @@ Aloitin ICMP Spoofing -harjoituksen käynnistämällä Mininetin `hub_topo.py`-t
 
 Repositorion `README.md`-tiedoston *Usage*-ohjeessa oli mainittu vain liikenteen kuuntelu (`sniff_icmp.py`) ja pingaaminen, joten varsinaisen hyökkäyksen todentamiseksi ajoin lisäksi kansiossa olevan `spoof_icmp.py`-skriptin kolmannella hostilla (ssam246 2024):
 
-- **`Node: h3> python spoof_icmp.py`**: Käynnistää hyökkääjän koneella Scapy-skriptin, joka tarkkailee verkon ICMP-liikennettä ja lähettää väärennettyjä *ICMP Echo Reply* -paketteja.
+- **`Node: h3> python spoof_icmp.py`**: Käynnistää hyökkääjän koneella Scapy-skriptin, joka tarkkailee verkon ICMP-liikennettä ja lähettää väärennettyjä ICMP Echo Reply -paketteja.
 - **`Node: h1> python sniff_icmp.py`**: Käynnistää kohdekoneella kuunteluskriptin, joka tulostaa kaikki verkossa liikkuvat ICMP-paketit.
-- **`Node: h2> ping 10.0.0.1`**: Asiakas lähettää normaaleja *ICMP Echo Request* -paketteja kohteelle `h1` (`10.0.0.1`).
+- **`Node: h2> ping 10.0.0.1`**: Asiakas lähettää normaaleja ICMP Echo Request -paketteja kohteelle `h1` (`10.0.0.1`).
 
 <img width="2543" height="1380" alt="kuva" src="https://github.com/user-attachments/assets/c6bb19e0-088f-4ab5-8ef9-2f5d4376b01a" />
 
@@ -74,7 +74,7 @@ Kuva 4. ICMP Spoofing toiminnassa (vasemmalla hyökkääjä `h3`, keskellä ping
 
 ### Havainnot ja miten ICMP Spoofing toimii
 
-ICMP (*Internet Control Message Protocol*) on Layer 3 -tason protokolla, jota käytetään verkkoyhteyksien testaamiseen (`ping`) ja virheilmoituksiin (Postel 1981, 1). Protokolla ei tarkista paketin lähettäjän henkilöllisyyttä, joten vastaanottaja ei pysty varmistamaan, kuka paketin on oikeasti lähettänyt (Postel 1981, 1–2).
+ICMP (Internet Control Message Protocol) on Layer 3 -tason protokolla, jota käytetään verkkoyhteyksien testaamiseen (`ping`) ja virheilmoituksiin (Postel 1981, 1). Protokolla ei tarkista paketin lähettäjän henkilöllisyyttä, joten vastaanottaja ei pysty varmistamaan, kuka paketin on oikeasti lähettänyt (Postel 1981, 1–2).
 
 Tässä harjoituksessa hyökkäys etenee seuraavasti:
 1. Kun `h2` lähettää ICMP Echo Request -pyynnön osoitteeseen `10.0.0.1`, hub-verkossa oleva hyökkääjä (`h3`) näkee liikenteen ja nappaa paketin (ssam246 2024).
@@ -99,7 +99,7 @@ Kuva 5. TCP Session Hijacking toiminnassa (vasemmalla hyökkääjä `h3`, keskel
 
 ### Havainnot ja miten TCP Session Hijacking toimii
 
-TCP (*Transmission Control Protocol*) on yhteydellinen Layer 4 -tason protokolla, joka pitää yllä aktiivista istuntoa osapuolten välillä IP-osoitteiden, porttinumeroiden sekä vaihtuvien **SEQ** (*Sequence Number*) ja **ACK** (*Acknowledgement Number*) -numeroiden avulla (OWASP 2024a). Koska salaamaton TCP-liikenne ei sisällä kryptografista eheyden tai lähettäjän tarkistusta, samassa verkkosegmentissä oleva hyökkääjä pystyy lukemaan nämä arvot verkosta ja syöttämään istuntoon omaa dataansa (OWASP 2024a).
+TCP (Transmission Control Protocol) on yhteydellinen Layer 4 -tason protokolla, joka pitää yllä aktiivista istuntoa osapuolten välillä IP-osoitteiden, porttinumeroiden sekä vaihtuvien **SEQ** (*Sequence Number*) ja **ACK** (*Acknowledgement Number*) -numeroiden avulla (OWASP 2024a). Koska salaamaton TCP-liikenne ei sisällä kryptografista eheyden tai lähettäjän tarkistusta, samassa verkkosegmentissä oleva hyökkääjä pystyy lukemaan nämä arvot verkosta ja syöttämään istuntoon omaa dataansa (OWASP 2024a).
 
 Tässä harjoituksessa kaappaus etenee seuraavasti:
 1. Kun asiakas (`h2`) ja palvelin (`h1`) avaavat TCP-yhteyden ja vaihtavat viestejä, hub-verkossa oleva hyökkääjä (`h3`) havaitsee liikenteen (`Sniffed TCP Data Packet`) (ssam246 2024).
@@ -146,7 +146,7 @@ Iso-Anttila, L. 2026b. Verkkoon tunkeutuminen ja tiedustelu. Luento 17.11.2026. 
 
 MITRE 2024a. Adversary-in-the-Middle. MITRE ATT&CK. Luettavissa: https://attack.mitre.org/techniques/T1557/. Luettu: 22.11.2026.
 
-MITRE 2024b. Adversary-in-the-Middle: ARP Cache Poisoning. MITRE ATT&CK®. Luettavissa: https://attack.mitre.org/techniques/T1557/002/. Luettu: 22.11.2026.
+MITRE 2024b. Adversary-in-the-Middle: ARP Cache Poisoning. MITRE ATT&CK. Luettavissa: https://attack.mitre.org/techniques/T1557/002/. Luettu: 22.11.2026.
 
 OWASP 2024a. Session hijacking attack. OWASP Foundation. Luettavissa: https://owasp.org/www-community/attacks/Session_hijacking_attack. Luettu: 22.11.2026.
 
