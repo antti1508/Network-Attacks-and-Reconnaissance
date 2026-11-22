@@ -105,7 +105,7 @@ Tässä harjoituksessa kaappaus etenee seuraavasti:
 1. Kun asiakas (`h2`) ja palvelin (`h1`) avaavat TCP-yhteyden ja vaihtavat viestejä, hub-verkossa oleva hyökkääjä (`h3`) havaitsee liikenteen (`Sniffed TCP Data Packet`) (ssam246 2024).
 2. Hyökkääjän `tcp_sniff_and_hijack.py`-skripti lukee paketista dynaamisen lähdeportin (`57698`) sekä senhetkiset SEQ- ja ACK-numerot (OWASP 2024a; ssam246 2024). Näiden tietojen pohjalta skripti rakentaa väärennetyn TCP-paketin, jonka *source IP* -osoitteeksi on huijattu `10.0.0.2` (`Injecting modified TCP payload: 10.0.0.2:57698 -> 10.0.0.1:12345`).
 3. Oikeanpuoleisessa `h1`-ikkunassa näkyy, kuinka palvelin vastaanottaa ensin oikean asiakkaan viestin (`Received: Hello from Host 2`) ja heti sen perään hyökkääjän injektoiman viestin (`Received: Hello from Host 1 You are hacked!`). Koska paketin portti- ja sekvenssinumerot täsmäävät avoimeen yhteyteen, palvelin hyväksyy paketin osaksi samaa luotettua istuntoa (OWASP 2024a).
-4. Lopuksi palvelimen päätteessä näkyy `ConnectionResetError: [Errno 104] Connection reset by peer`. Tämä johtuu siitä, että hyökkääjän syöttämä ylimääräinen payload kasvatti palvelimen odottamaa SEQ-numeroa, jolloin asiakkaan (`h2`) ja palvelimen (`h1`) tilat menivät epätahtiin (*desynchronization*) ja yhteys katkesi TCP RST -pakettiin (OWASP 2024a).
+4. Lopuksi palvelimen päätteessä näkyy `ConnectionResetError: [Errno 104] Connection reset by peer`. Tämä johtuu siitä, että hyökkääjän syöttämä ylimääräinen payload kasvatti palvelimen odottamaa SEQ-numeroa, jolloin asiakkaan (`h2`) ja palvelimen (`h1`) tilat menivät epätahtiin ja yhteys katkesi TCP RST -pakettiin (OWASP 2024a).
 
 Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja protokollia (kuten TLS/HTTPS tai SSH), jolloin ulkopuolinen tarkkailija ei pysty lukemaan liikennettä eikä muokkaamaan paketteja ilman salausavaimia (OWASP 2024a).
 
@@ -129,7 +129,7 @@ Kuvakaappaukseen on korostettu kolme keskeistä kohtaa:
 
 ### Havainnot ja miten TCP SYN-Flood toimii
 
-TCP SYN-Flood on palvelunestohyökkäys (*Denial of Service, DoS* / *Distributed Denial of Service, DDoS*), joka hyödyntää TCP-yhteyden muodostamiseen käytettävää kolmiosaista kättelyä (*TCP three-way handshake*) (OWASP 2024b). Normaalissa yhteydenotossa asiakas lähettää ensin `SYN`-paketin (*Synchronize*), palvelin vastaa `SYN-ACK`-paketilla (*Synchronize-Acknowledgement*) ja asiakas vahvistaa yhteyden `ACK`-paketilla (OWASP 2024b).
+TCP SYN-Flood on palvelunestohyökkäys (Denial of Service, DoS), joka hyödyntää TCP-yhteyden muodostamiseen käytettävää kolmiosaista kättelyä (OWASP 2024b). Normaalissa yhteydenotossa asiakas lähettää ensin `SYN`-paketin, palvelin vastaa `SYN-ACK`-paketilla ja asiakas vahvistaa yhteyden `ACK`-paketilla (OWASP 2024b).
 
 Tässä harjoituksessa hyökkäys toimii seuraavasti:
 1. **Half-open connections:** Hyökkäävä host (kuvassa `10.0.0.4`) lähettää kohteelle (`10.0.0.8`) suuren määrän yhteyspyyntöjä vaihtuvista lähdeporteista (`2649–2654`) suorittamatta kättelyä loppuun (OWASP 2024b).
