@@ -111,7 +111,14 @@ Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja pro
 
 Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja protokollia (kuten TLS/HTTPS tai SSH), jolloin ulkopuolinen tarkkailija ei pysty lukemaan liikennettä eikä muokkaamaan paketteja ilman salausavaimia.
 
-# c) Hakemistossa 02-SDN-DDos_Simulation tryout-kansiossa on työkalut, jotta voit ajaa TCP SYN-Flood-hyökkäyksen turvallisesti. Kirjoita, miten ajoit hyökkäyksen ja miten kyseinen hyökkäys toimii.
+## c) TCP SYN-Flood -hyökkäys SDN-ympäristössä
+
+Toteutin TCP SYN-Flood -harjoituksen eristetyssä Mininet-simulaatioympäristössä (`02-SDN_DDoS_Simulation-tryout`), joka pohjautuu avoimeen SDN DDoS -simulaatioprojektiin (Santhisenan 2020). Aluksi siivosin edellisten harjoitusten verkkoliitännät (`sudo mn -c`), jotta uusi virtuaaliverkko käynnistyi ilman ristiriitoja.
+
+Harjoituksen suorittaminen vaati komponenttien käynnistämisen tietyssä järjestyksessä:
+- **`ryu-manager simple_switch_13.py &`**: Käynnisti ensin SDN-ohjaimen (*SDN controller*) taustalle kuuntelemaan verkon kytkimiä.
+- **`sudo python3 tree_topology.py`**: Loi virtuaalisen puutopologian (*tree topology*), jossa on seitsemän kytkintä (`s1–s7`) ja useita host-koneita, sekä aloitti automaattisesti vuorottelevat hyökkäysepisodit (*Episode 0, 1, 2...*) (Santhisenan 2020).
+- **`sudo wireshark &`**: Käynnistettiin liikenteen tarkkailua varten, ja kaappaus (*live capture*) kohdistettiin suoraan kytkimen `s4-eth2`-verkkoliitäntään.
 
 <img width="2424" height="1345" alt="kuva" src="https://github.com/user-attachments/assets/2380cdae-32df-4365-aaa8-382b2f0fe96d" />
 
@@ -121,6 +128,17 @@ Kuvakaappaukseen on korostettu kolme keskeistä kohtaa:
 - **Punainen laatikko (vasen pääteikkuna):** Näyttää käynnissä olevan Mininet-simulaation (`tree_topology.py`), joka ajaa peräkkäisiä hyökkäysepisodeja (*Episode 5–11*), joissa yksi host lähettää DDoS-tulvaliikennettä (*is attacking*) samalla kun toinen host lähettää normaalia liikennettä (*is sending normal requests*).
 - **Vihreä laatikko (Wiresharkin pakettilista):** Osoittaa kaapattua verkonsisäistä DDoS-hyökkäysliikennettä, jossa hyökkääjä (`10.0.0.4`) lähettää peräkkäisiä TCP-paketteja kasvavista lähdeporteista (`2649–2654`) kohdeosoitteeseen `10.0.0.8` (portti `8`), sekä kohteen lähettämän `RST, ACK` -vastauksen (punaisella korostettu rivi). Lisäksi listassa näkyy verkon osoitteenselvitykseen liittyviä ARP-kyselyitä.
 - **Sininen laatikko (Wiresharkin alareuna):** Todentaa, että kaappaus suoritettiin suoraan Mininet-kytkimen `s4-eth2`-verkkoliitännältä (`s4-eth2: <live capture in progress>`).
+
+### Havainnot ja miten TCP SYN-Flood toimii
+
+TCP SYN-Flood on palvelunestohyökkäys (*Denial of Service, DoS* / *Distributed Denial of Service, DDoS*), joka hyödyntää TCP-yhteyden muodostamiseen käytettävää kolmiosaista kättelyä (*TCP three-way handshake*) (OWASP 2024b). Normaalissa yhteydenotossa asiakas lähettää ensin `SYN`-paketin (*Synchronize*), palvelin vastaa `SYN-ACK`-paketilla (*Synchronize-Acknowledgement*) ja asiakas vahvistaa yhteyden `ACK`-paketilla (OWASP 2024b).
+
+Tässä harjoituksessa hyökkäys toimii seuraavasti:
+1. **Puoliavoimien yhteyksien tulva (*Half-open connections*):** Hyökkäävä host (kuvassa `10.0.0.4`) lähettää kohteelle (`10.0.0.8`) suuren määrän yhteyspyyntöjä vaihtuvista lähdeporteista (`2649–2654`) suorittamatta kättelyä loppuun (OWASP 2024b).
+2. **Resurssien täyttyminen:** Oikeassa palvelinympäristössä kohdekone varaa jokaiselle saapuvalle `SYN`-pyynnölle muistia ja yhteysjonon (*backlog queue*) odottaessaan asiakkaan viimeistä `ACK`-kuittausta (OWASP 2024b). Kun pyyntöjä tulee jatkuvana tulvana, yhteysjonot täyttyvät eivätkä oikeat käyttäjät enää pääse muodostamaan yhteyttä palvelimeen (OWASP 2024b).
+3. **Wireshark-havainnot simulaatiossa:** Koska simulaation kohdehostilla (`10.0.0.8`) ei ollut varsinaista palvelinsovellusta kuuntelemassa porttia `8`, kohdekone hylkäsi tulvivat paketit välittömästi lähettämällä `RST, ACK` -paketin (*Reset*), mikä näkyy Wiresharkissa punaisella korostettuna rivinä.
+
+Tuotantoverkoissa TCP SYN-Flood -hyökkäyksiltä suojaudutaan esimerkiksi rajoittamalla saapuvien yhteyspyyntöjen määrää (*rate limiting*), käyttämällä *SYN cookies* -tekniikkaa (joka estää muistin varaamisen ennen kättelyn valmistumista) sekä suodattamalla poikkeavaa liikennettä palomuurin tai SDN-ohjaimen sääntöjen avulla (OWASP 2024b).
 
 ## Lähteet
 Iso-Anttila, L. 2026a. 03-mininet. Oppimateriaali. Haaga-Helia ammattikorkeakoulu. Luettavissa: https://hhmoodle.haaga-helia.fi/pluginfile.php/5055842/mod_resource/content/1/03-mininet.pdf. Luettu: 22.11.2026.
