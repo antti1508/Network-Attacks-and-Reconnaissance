@@ -58,11 +58,41 @@ Tämän seurauksena molempien uhrien ARP-tauluihin tallentuu `h3`:n MAC-osoite v
 
 # b) Samassa hakemistossa on myös ICMP Spoofing ja TCP Session Hijacking. Aja molemmat labrat läpi ja kerro, miten molemmat tekniikat toimivat.
 
+## 1. ICMP Spoofing
+
+Aloitin ICMP Spoofing -harjoituksen käynnistämällä Mininetin `hub_topo.py`-topologialla ja avaamalla `xterm`-komennolla omat terminal-ikkunat kaikille kolmelle hostille (`h1`, `h2` ja `h3`). 
+
+Repositorion `README.md`-tiedoston *Usage*-ohjeessa oli mainittu vain liikenteen kuuntelu (`sniff_icmp.py`) ja pingaaminen, joten varsinaisen hyökkäyksen todentamiseksi ajoin lisäksi kansiossa olevan `spoof_icmp.py`-skriptin kolmannella hostilla:
+
+- **`Node: h3> python spoof_icmp.py`**: Käynnistää hyökkääjän koneella Scapy-skriptin, joka tarkkailee verkon ICMP-liikennettä ja lähettää väärennettyjä *ICMP Echo Reply* -paketteja.
+- **`Node: h1> python sniff_icmp.py`**: Käynnistää kohdekoneella kuunteluskriptin, joka tulostaa kaikki verkossa liikkuvat ICMP-paketit.
+- **`Node: h2> ping 10.0.0.1`**: Asiakas lähettää normaaleja *ICMP Echo Request* -paketteja kohteelle `h1` (`10.0.0.1`).
+
+<img width="2543" height="1380" alt="kuva" src="https://github.com/user-attachments/assets/e67bd10b-1ed7-446f-9bd3-148a327f582c" />
+
+Kuva 4. ICMP Spoofing toiminnassa (vasemmalla hyökkääjä `h3`, keskellä pingaava `h2` ja oikealla liikennettä seuraava `h1`).
+
+### Havainnot ja miten ICMP Spoofing toimii
+
+ICMP (*Internet Control Message Protocol*) on Layer 3 -tason protokolla, jota käytetään verkkoyhteyksien testaamiseen (`ping`) ja virheilmoituksiin (Postel 1981, 1). Protokolla ei tarkista paketin lähettäjän henkilöllisyyttä, joten vastaanottaja ei pysty varmistamaan, kuka paketin on oikeasti lähettänyt (Postel 1981, 1–2).
+
+Tässä harjoituksessa hyökkäys etenee seuraavasti:
+1. Kun `h2` lähettää *ICMP Echo Request* -pyynnön osoitteeseen `10.0.0.1`, hub-verkossa oleva hyökkääjä (`h3`) näkee liikenteen ja nappaa paketin.
+2. Hyökkääjän `spoof_icmp.py`-skripti kopioi pyynnöstä tarvittavat tiedot ja rakentaa oman *ICMP Echo Reply* -vastauksen, jonka *source IP* -osoitteeksi on väärennetty `10.0.0.1` (`Sent 1 packets.`).
+3. Koska myös oikea `h1` vastaa ping-pyyntöön, oikeanpuoleisessa `h1`-ikkunassa näkyy jokaiselle pyynnölle **kaksi** `10.0.0.1 > 10.0.0.2 echo-reply` -vastausta: kohdekoneen `h1` oma vastaus sekä hyökkääjän `h3` väärentämä vastaus.
+
+Laajemmissa hyökkäyksissä ICMP Spoofingia hyödynnetään esimerkiksi *ICMP Redirect (Type 5)* -viesteillä, joilla uhrin *routing table* saadaan ohjaamaan liikenne hyökkääjän kautta (MITRE 2024a), tai palvelunestohyökkäyksissä (kuten Smurf-hyökkäyksessä), joissa uhrin IP-osoitteella lähetetään suuri määrä väärennettyjä ping-pyyntöjä verkon *broadcast*-osoitteisiin.
+
+
 # c) Hakemistossa 02-SDN-DDos_Simulation tryout-kansiossa on työkalut, jotta voit ajaa TCP SYN-Flood-hyökkäyksen turvallisesti. Kirjoita, miten ajoit hyökkäyksen ja miten kyseinen hyökkäys toimii.
 
 ## Lähteet
-Iso-Anttila, L. 2026. Verkkoon tunkeutuminen ja tiedustelu. Luento 17.11.2026. Haaga-Helia ammattikorkeakoulu.
+Iso-Anttila, L. 2026a. 03-mininet. Oppimateriaali. Haaga-Helia ammattikorkeakoulu. Luettavissa: https://hhmoodle.haaga-helia.fi/pluginfile.php/5055842/mod_resource/content/1/03-mininet.pdf. Luettu: 22.11.2026.
 
-https://hhmoodle.haaga-helia.fi/pluginfile.php/5055842/mod_resource/content/1/03-mininet.pdf
+Iso-Anttila, L. 2026b. Verkkoon tunkeutuminen ja tiedustelu. Luento 17.11.2026. Haaga-Helia ammattikorkeakoulu.
 
-https://attack.mitre.org/techniques/T1557/002/
+MITRE 2024a. Adversary-in-the-Middle. MITRE ATT&CK®. Luettavissa: https://attack.mitre.org/techniques/T1557/. Luettu: 22.11.2026.
+
+MITRE 2024b. Adversary-in-the-Middle: ARP Cache Poisoning. MITRE ATT&CK®. Luettavissa: https://attack.mitre.org/techniques/T1557/002/. Luettu: 22.11.2026.
+
+Postel, J. 1981. RFC 792: Internet Control Message Protocol. Internet Engineering Task Force (IETF). Luettavissa: https://datatracker.ietf.org/doc/html/rfc792. Luettu: 22.11.2026.
