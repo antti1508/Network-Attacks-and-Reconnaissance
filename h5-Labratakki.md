@@ -118,7 +118,7 @@ Iso-Anttila, L. 2026a. 03-mininet. Oppimateriaali. Haaga-Helia ammattikorkeakoul
 
 Iso-Anttila, L. 2026b. Verkkoon tunkeutuminen ja tiedustelu. Luento 17.11.2026. Haaga-Helia ammattikorkeakoulu.
 
-MITRE 2024a. Adversary-in-the-Middle. MITRE ATT&CK®. Luettavissa: https://attack.mitre.org/techniques/T1557/. Luettu: 22.11.2026.
+MITRE 2024a. Adversary-in-the-Middle. MITRE ATT&CK. Luettavissa: https://attack.mitre.org/techniques/T1557/. Luettu: 22.11.2026.
 
 MITRE 2024b. Adversary-in-the-Middle: ARP Cache Poisoning. MITRE ATT&CK®. Luettavissa: https://attack.mitre.org/techniques/T1557/002/. Luettu: 22.11.2026.
 
