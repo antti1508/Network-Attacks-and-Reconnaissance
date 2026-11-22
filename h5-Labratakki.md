@@ -48,7 +48,7 @@ Kuvassa värit kertovat seuraavaa:
 - **Sininen:** ARP-hyökkäys Wiresharkin kaappaamana.
 - **Keltainen:** H3-node, joka ajaa Python-skriptillä ARP-hyökkäystä.
 - **Vihreä:** H1-node, jolla yhdistetään H2-nodeen SSH:lla hyökkäyksen aikana.
-- **Punainen:** H3-nodella pyörivä `sshesame`-hunajapurkki, joka kaappaa ja tunnistaa H2-nodeen tarkoitetun kirjautumisen ja autentikoinnin.
+- **Punainen:** H3-nodella pyörivä `sshesame`, joka kaappaa ja tunnistaa H2-nodeen tarkoitetun kirjautumisen ja autentikoinnin.
 
 ### Miten ARP-hyökkäys toimii kokonaisuutena?
 
