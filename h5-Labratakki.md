@@ -132,7 +132,7 @@ Kuvakaappaukseen on korostettu kolme keskeistä kohtaa:
 TCP SYN-Flood on palvelunestohyökkäys (*Denial of Service, DoS* / *Distributed Denial of Service, DDoS*), joka hyödyntää TCP-yhteyden muodostamiseen käytettävää kolmiosaista kättelyä (*TCP three-way handshake*) (OWASP 2024b). Normaalissa yhteydenotossa asiakas lähettää ensin `SYN`-paketin (*Synchronize*), palvelin vastaa `SYN-ACK`-paketilla (*Synchronize-Acknowledgement*) ja asiakas vahvistaa yhteyden `ACK`-paketilla (OWASP 2024b).
 
 Tässä harjoituksessa hyökkäys toimii seuraavasti:
-1. **Puoliavoimien yhteyksien tulva (*Half-open connections*):** Hyökkäävä host (kuvassa `10.0.0.4`) lähettää kohteelle (`10.0.0.8`) suuren määrän yhteyspyyntöjä vaihtuvista lähdeporteista (`2649–2654`) suorittamatta kättelyä loppuun (OWASP 2024b).
+1. **Half-open connections:** Hyökkäävä host (kuvassa `10.0.0.4`) lähettää kohteelle (`10.0.0.8`) suuren määrän yhteyspyyntöjä vaihtuvista lähdeporteista (`2649–2654`) suorittamatta kättelyä loppuun (OWASP 2024b).
 2. **Resurssien täyttyminen:** Oikeassa palvelinympäristössä kohdekone varaa jokaiselle saapuvalle `SYN`-pyynnölle muistia ja yhteysjonon (*backlog queue*) odottaessaan asiakkaan viimeistä `ACK`-kuittausta (OWASP 2024b). Kun pyyntöjä tulee jatkuvana tulvana, yhteysjonot täyttyvät eivätkä oikeat käyttäjät enää pääse muodostamaan yhteyttä palvelimeen (OWASP 2024b).
 3. **Wireshark-havainnot simulaatiossa:** Koska simulaation kohdehostilla (`10.0.0.8`) ei ollut varsinaista palvelinsovellusta kuuntelemassa porttia `8`, kohdekone hylkäsi tulvivat paketit välittömästi lähettämällä `RST, ACK` -paketin (*Reset*), mikä näkyy Wiresharkissa punaisella korostettuna rivinä.
 
