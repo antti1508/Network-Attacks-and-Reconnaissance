@@ -36,6 +36,7 @@ Tämän jälkeen työasemalle piti vielä asentaa X11-palvelin, jotta virtuaalik
 - **`Node: h1> ssh h2`**: `h1` ottaa uudelleen SSH-yhteyden `h2`-osoitteeseen, mutta liikenne ohjautuu ARP-myrkytyksen vuoksi hyökkääjän `sshesame`-hunajapurkille.
 - **`Warning: the ED25519 host key for 'h2' ja niin edelleen`**: SSH-asiakas varoittaa, että palvelimen sormenjälki on muuttunut (koska vastassa on nyt `h3` eikä oikea `h2`), mikä on klassinen merkki Man-in-the-Middle-hyökkäyksestä.
 - **`Are you sure you want to continue connecting (yes/no)? Yes`**: Käyttäjä ohittaa varoituksen ja hyväksyy hyökkääjän väärennetyn palvelinavaimen.
+- **`Node: h1> ssh-keygen –R h2`**: Poistetaan vanha avain
 
 Kaikkien annettujen komentojen jälkeen tilanne näytti tältä:
 
