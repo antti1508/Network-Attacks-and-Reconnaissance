@@ -48,13 +48,13 @@ Kuvassa värit kertovat seuraavaa:
 - **Sininen:** ARP-hyökkäys Wiresharkin kaappaamana.
 - **Keltainen:** H3-node, joka ajaa Python-skriptillä ARP-hyökkäystä.
 - **Vihreä:** H1-node, jolla yhdistetään H2-nodeen SSH:lla hyökkäyksen aikana.
-- **Punainen:** H3-nodella pyörivä `sshesame`, joka kaappaa ja tunnistaa H2-nodeen tarkoitetun kirjautumisen ja autentikoinnin.
+- **Punainen:** H3-nodella pyörivä `sshesame`-ohjelma, joka kaappaa ja tunnistaa H2-nodeen tarkoitetun kirjautumisen ja autentikoinnin.
 
 ### Miten ARP-hyökkäys toimii kokonaisuutena?
 
 ARP-protokolla (Address Resolution Protocol) on tilaton eikä se todenna viestien lähettäjää, minkä vuoksi lähiverkon laitteet päivittävät ARP-välimuistinsa sokeasti viimeisimmän vastaanotetun ARP-vastauksen (`is-at`) perusteella (MITRE 2024b). Hyökkääjä (`h3`) hyödyntää tätä luottamusta lähettämällä jatkuvasti väärennettyjä ARP-vastauksia sekä `h1`:lle (väittäen olevansa `h2`) että `h2`:lle (väittäen olevansa `h1`) (MITRE 2024b).
 
-Tämän seurauksena molempien uhrien ARP-tauluihin tallentuu `h3`:n MAC-osoite vastapuolen IP-osoitteen kohdalle, ja kaikki niiden välinen liikenne alkaa kulkea `h3`:n kautta (Man-in-the-Middle) (MITRE 2024b). Koska `h3`:ssa on kytketty päälle IP-pakettien edelleenlähetys (`ip_forward=1`) ja `iptables`-sääntö ohjaa portin 22 liikenteen paikalliselle `sshesame`, `h1`:n SSH-yhteys päätyy hyökkääjän valepalvelimelle (Iso-Anttila 2026b).
+Tämän seurauksena molempien uhrien ARP-tauluihin tallentuu `h3`:n MAC-osoite vastapuolen IP-osoitteen kohdalle, ja kaikki niiden välinen liikenne alkaa kulkea `h3`:n kautta (Man-in-the-Middle) (MITRE 2024b). Koska `h3`:ssa on kytketty päälle IP-pakettien edelleenlähetys (`ip_forward=1`) ja `iptables`-sääntö ohjaa portin 22 liikenteen paikalliselle `sshesame` -ohjelmalle, `h1`:n SSH-yhteys päätyy hyökkääjän valepalvelimelle (Iso-Anttila 2026b).
 
 # b) Samassa hakemistossa on myös ICMP Spoofing ja TCP Session Hijacking. Aja molemmat labrat läpi ja kerro, miten molemmat tekniikat toimivat.
 
