@@ -77,11 +77,13 @@ Kuva 4. ICMP Spoofing toiminnassa (vasemmalla hyökkääjä `h3`, keskellä ping
 ICMP (*Internet Control Message Protocol*) on Layer 3 -tason protokolla, jota käytetään verkkoyhteyksien testaamiseen (`ping`) ja virheilmoituksiin (Postel 1981, 1). Protokolla ei tarkista paketin lähettäjän henkilöllisyyttä, joten vastaanottaja ei pysty varmistamaan, kuka paketin on oikeasti lähettänyt (Postel 1981, 1–2).
 
 Tässä harjoituksessa hyökkäys etenee seuraavasti:
-1. Kun `h2` lähettää *ICMP Echo Request* -pyynnön osoitteeseen `10.0.0.1`, hub-verkossa oleva hyökkääjä (`h3`) näkee liikenteen ja nappaa paketin.
-2. Hyökkääjän `spoof_icmp.py`-skripti kopioi pyynnöstä tarvittavat tiedot ja rakentaa oman *ICMP Echo Reply* -vastauksen, jonka *source IP* -osoitteeksi on väärennetty `10.0.0.1` (`Sent 1 packets.`).
+1. Kun `h2` lähettää ICMP Echo Request -pyynnön osoitteeseen `10.0.0.1`, hub-verkossa oleva hyökkääjä (`h3`) näkee liikenteen ja nappaa paketin.
+2. Hyökkääjän `spoof_icmp.py`-skripti kopioi pyynnöstä tarvittavat tiedot ja rakentaa oman ICMP Echo Reply -vastauksen, jonka source IP -osoitteeksi on väärennetty `10.0.0.1` (`Sent 1 packets.`).
 3. Koska myös oikea `h1` vastaa ping-pyyntöön, oikeanpuoleisessa `h1`-ikkunassa näkyy jokaiselle pyynnölle **kaksi** `10.0.0.1 > 10.0.0.2 echo-reply` -vastausta: kohdekoneen `h1` oma vastaus sekä hyökkääjän `h3` väärentämä vastaus.
 
-Laajemmissa hyökkäyksissä ICMP Spoofingia hyödynnetään esimerkiksi *ICMP Redirect (Type 5)* -viesteillä, joilla uhrin *routing table* saadaan ohjaamaan liikenne hyökkääjän kautta (MITRE 2024a), tai palvelunestohyökkäyksissä (kuten Smurf-hyökkäyksessä), joissa uhrin IP-osoitteella lähetetään suuri määrä väärennettyjä ping-pyyntöjä verkon *broadcast*-osoitteisiin.
+Laajemmissa hyökkäyksissä ICMP Spoofingia hyödynnetään esimerkiksi ICMP Redirect (Type 5) -viesteillä, joilla uhrin routing table saadaan ohjaamaan liikenne hyökkääjän kautta (MITRE 2024a), tai palvelunestohyökkäyksissä, joissa uhrin IP-osoitteella lähetetään suuri määrä väärennettyjä ping-pyyntöjä verkon broadcast-osoitteisiin.
+
+## TCP Session hijacking
 
 
 # c) Hakemistossa 02-SDN-DDos_Simulation tryout-kansiossa on työkalut, jotta voit ajaa TCP SYN-Flood-hyökkäyksen turvallisesti. Kirjoita, miten ajoit hyökkäyksen ja miten kyseinen hyökkäys toimii.
