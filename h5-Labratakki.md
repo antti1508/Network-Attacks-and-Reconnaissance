@@ -123,7 +123,7 @@ Harjoituksen suorittaminen vaati komponenttien käynnistämisen tietyssä järje
 Kuva 6. DDoS Flooding -simulaatio ja verkkoliikenteen kaappaus Wiresharkissa.
 
 Kuvakaappaukseen on korostettu kolme keskeistä kohtaa:
-- **Punainen laatikko (vasen pääteikkuna):** Näyttää käynnissä olevan Mininet-simulaation (`tree_topology.py`), joka ajaa peräkkäisiä hyökkäysepisodeja (*Episode 5–11*), joissa yksi host lähettää DDoS-tulvaliikennettä (*is attacking*) samalla kun toinen host lähettää normaalia liikennettä (*is sending normal requests*).
+- **Punainen laatikko (vasen pääteikkuna):** Näyttää käynnissä olevan Mininet-simulaation (`tree_topology.py`), joka ajaa peräkkäisiä hyökkäysepisodeja (*Episode 5–11*), joissa yksi host lähettää DDoS-tulvaliikennettä samalla kun toinen host lähettää normaalia liikennettä.
 - **Vihreä laatikko (Wiresharkin pakettilista):** Osoittaa kaapattua verkonsisäistä DDoS-hyökkäysliikennettä, jossa hyökkääjä (`10.0.0.4`) lähettää peräkkäisiä TCP-paketteja kasvavista lähdeporteista (`2649–2654`) kohdeosoitteeseen `10.0.0.8` (portti `8`), sekä kohteen lähettämän `RST, ACK` -vastauksen (punaisella korostettu rivi). Lisäksi listassa näkyy verkon osoitteenselvitykseen liittyviä ARP-kyselyitä.
 - **Sininen laatikko (Wiresharkin alareuna):** Todentaa, että kaappaus suoritettiin suoraan Mininet-kytkimen `s4-eth2`-verkkoliitännältä (`s4-eth2: <live capture in progress>`).
 
@@ -136,7 +136,7 @@ Tässä harjoituksessa hyökkäys toimii seuraavasti:
 2. **Resurssien täyttyminen:** Oikeassa palvelinympäristössä kohdekone varaa jokaiselle saapuvalle `SYN`-pyynnölle muistia ja yhteysjonon (*backlog queue*) odottaessaan asiakkaan viimeistä `ACK`-kuittausta (OWASP 2024b). Kun pyyntöjä tulee jatkuvana tulvana, yhteysjonot täyttyvät eivätkä oikeat käyttäjät enää pääse muodostamaan yhteyttä palvelimeen (OWASP 2024b).
 3. **Wireshark-havainnot simulaatiossa:** Koska simulaation kohdehostilla (`10.0.0.8`) ei ollut varsinaista palvelinsovellusta kuuntelemassa porttia `8`, kohdekone hylkäsi tulvivat paketit välittömästi lähettämällä `RST, ACK` -paketin (*Reset*), mikä näkyy Wiresharkissa punaisella korostettuna rivinä.
 
-Tuotantoverkoissa TCP SYN-Flood -hyökkäyksiltä suojaudutaan esimerkiksi rajoittamalla saapuvien yhteyspyyntöjen määrää (*rate limiting*), käyttämällä *SYN cookies* -tekniikkaa (joka estää muistin varaamisen ennen kättelyn valmistumista) sekä suodattamalla poikkeavaa liikennettä palomuurin tai SDN-ohjaimen sääntöjen avulla (OWASP 2024b).
+Tuotantoverkoissa TCP SYN-Flood -hyökkäyksiltä suojaudutaan esimerkiksi rajoittamalla saapuvien yhteyspyyntöjen määrää, käyttämällä SYN cookies -tekniikkaa (joka estää muistin varaamisen ennen kättelyn valmistumista) sekä suodattamalla poikkeavaa liikennettä palomuurin tai SDN-ohjaimen sääntöjen avulla (OWASP 2024b).
 
 ## Lähteet
 
