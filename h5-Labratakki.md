@@ -68,7 +68,7 @@ Repositorion `README.md`-tiedoston *Usage*-ohjeessa oli mainittu vain liikenteen
 - **`Node: h1> python sniff_icmp.py`**: Käynnistää kohdekoneella kuunteluskriptin, joka tulostaa kaikki verkossa liikkuvat ICMP-paketit.
 - **`Node: h2> ping 10.0.0.1`**: Asiakas lähettää normaaleja *ICMP Echo Request* -paketteja kohteelle `h1` (`10.0.0.1`).
 
-<img width="2543" height="1380" alt="kuva" src="https://github.com/user-attachments/assets/e67bd10b-1ed7-446f-9bd3-148a327f582c" />
+<img width="2543" height="1380" alt="kuva" src="https://github.com/user-attachments/assets/c6bb19e0-088f-4ab5-8ef9-2f5d4376b01a" />
 
 Kuva 4. ICMP Spoofing toiminnassa (vasemmalla hyökkääjä `h3`, keskellä pingaava `h2` ja oikealla liikennettä seuraava `h1`).
 
