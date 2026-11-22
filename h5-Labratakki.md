@@ -1,14 +1,14 @@
 # h5 Labratakki
 
-# a) Aja tunnilla esitetty ARP hyökkäys ja tutki, miten se toimii.
+# a) Aja tunnilla esitetty ARP-hyökkäys ja tutki, miten se toimii.
 
-Tässä harjoituksessa käytetään ympäristönä Larin Mininet-virtuaalikonetiedostoa ja VMware-alustaa. "Pienten :D" alkuongelmien jälkeen sain VMwaren asennettua ja virtuaalikoneen käyntiin. Noin parin tunnin konfiguroinnin jälkeen ympäristö oli toimintavalmis.
+Tässä harjoituksessa käytetään ympäristönä Larin Mininet-virtuaalikonetiedostoa ja VMware-alustaa (Iso-Anttila 2026a). "Pienten :D" alkuongelmien jälkeen sain VMwaren asennettua ja virtuaalikoneen käyntiin. Noin parin tunnin konfiguroinnin jälkeen ympäristö oli toimintavalmis.
 
 <img width="1524" height="412" alt="kuva" src="https://github.com/user-attachments/assets/75969d48-f2ad-4210-8860-3c8394a86a63" />
 
 Kuva 1. Mininet toiminnassa.
 
-Seuraavaksi seurasin tunnilta saatuja ohjeita ja ajoin ARP-hyökkäyksen ohjeiden mukaisesti suorittamalla seuraavat komennot järjestyksessä:
+Seuraavaksi seurasin tunnilta saatuja ohjeita ja ajoin ARP-hyökkäyksen ohjeiden mukaisesti suorittamalla seuraavat komennot järjestyksessä (Iso-Anttila 2026a; Iso-Anttila 2026b):
 
 - **`ryu-manager ryu.app.simple_switch_13`**: Käynnistää Ryu SDN -kontrollerin perusmuotoisena oppivana kytkimenä.
 - **`sudo mn --topo single,3 --mac --switch ovsk --controller remote`**: Luo Mininetillä verkon, jossa on yksi Open vSwitch -kytkin, kolme virtuaalikonetta (`h1`, `h2`, `h3`), selkeät MAC-osoitteet (`--mac`) ja yhteys ulkoiseen kontrolleriin.
@@ -19,7 +19,7 @@ Kuvassa 2 Mininet on käynnissä, ja virtuaalikoneeseen on otettu yhteys SSH:lla
 
 Kuva 2. Mininet käynnissä.
 
-Tämän jälkeen työasemalle piti vielä asentaa X11-palvelin, jotta virtuaalikoneiden erilliset pääteikkunat saatiin avattua. Minun täyti myös ajaa xtermiä varten skripti komennolla ```./get_xauth.sh``` ja ```sudo -s xauth add mininet-vm/unix:10 MIT-MAGIC-COOKIE-1 <palaute komennosta get_xauth.sh>```
+Tämän jälkeen työasemalle piti vielä asentaa X11-palvelin, jotta virtuaalikoneiden erilliset pääteikkunat saatiin avattua. Minun täytyi myös ajaa xtermiä varten skripti komennolla ```./get_xauth.sh``` ja ```sudo -s xauth add mininet-vm/unix:10 MIT-MAGIC-COOKIE-1 <palaute komennosta get_xauth.sh>``` (Iso-Anttila 2026a).
 
 - **`mininet> pingall`**: Testaa, että kaikki koneet (`h1`–`h3`) saavat yhteyden toisiinsa, ja täyttää samalla niiden ARP-taulut.
 - **`mininet> xterm h1`**: Avaa oman erillisen pääteikkunan virtuaalikoneelle `h1`.
@@ -34,7 +34,7 @@ Tämän jälkeen työasemalle piti vielä asentaa X11-palvelin, jotta virtuaalik
 - **`Node: h1> ssh h2`**: `h1` yrittää ottaa SSH-yhteyden `h2`-koneeseen, mutta ARP-myrkytyksen ja `iptables`-ohjauksen vuoksi yhteys päätyykin salaa hyökkääjän (`h3`) `sshesame`-valepalvelimelle.
 - **`Node: h1> ssh-keygen -R h2`**: Poistaa `h2`-palvelimen aiemmin tallennetun julkisen avaimen `h1`:n `known_hosts`-tiedostosta, jotta yhteys ei esty suoraan avainristiriidan vuoksi.
 - **`Node: h1> ssh h2`**: `h1` ottaa uudelleen SSH-yhteyden `h2`-osoitteeseen, mutta liikenne ohjautuu ARP-myrkytyksen vuoksi hyökkääjän `sshesame`-hunajapurkille.
-- **`Warning: the ED25519 host key for 'h2'ja niin edelleen`**: SSH-asiakas varoittaa, että palvelimen sormenjälki on muuttunut (koska vastassa on nyt `h3` eikä oikea `h2`), mikä on klassinen merkki Man-in-the-Middle-hyökkäyksestä.
+- **`Warning: the ED25519 host key for 'h2' ja niin edelleen`**: SSH-asiakas varoittaa, että palvelimen sormenjälki on muuttunut (koska vastassa on nyt `h3` eikä oikea `h2`), mikä on klassinen merkki Man-in-the-Middle-hyökkäyksestä.
 - **`Are you sure you want to continue connecting (yes/no)? Yes`**: Käyttäjä ohittaa varoituksen ja hyväksyy hyökkääjän väärennetyn palvelinavaimen.
 
 Kaikkien annettujen komentojen jälkeen tilanne näytti tältä:
@@ -52,17 +52,17 @@ Kuvassa värit kertovat seuraavaa:
 
 ### Miten ARP-hyökkäys toimii kokonaisuutena?
 
-ARP-protokolla (Address Resolution Protocol) on tilaton eikä se todenna viestien lähettäjää, minkä vuoksi lähiverkon laitteet päivittävät ARP-välimuistinsa sokeasti viimeisimmän vastaanotetun ARP-vastauksen (`is-at`) perusteella (MITRE ATT&CK, T1557.002). Hyökkääjä (`h3`) hyödyntää tätä luottamusta lähettämällä jatkuvasti väärennettyjä ARP-vastauksia sekä `h1`:lle (väittäen olevansa `h2`) että `h2`:lle (väittäen olevansa `h1`) (MITRE ATT&CK, T1557.002).
+ARP-protokolla (Address Resolution Protocol) on tilaton eikä se todenna viestien lähettäjää, minkä vuoksi lähiverkon laitteet päivittävät ARP-välimuistinsa sokeasti viimeisimmän vastaanotetun ARP-vastauksen (`is-at`) perusteella (MITRE 2024b). Hyökkääjä (`h3`) hyödyntää tätä luottamusta lähettämällä jatkuvasti väärennettyjä ARP-vastauksia sekä `h1`:lle (väittäen olevansa `h2`) että `h2`:lle (väittäen olevansa `h1`) (MITRE 2024b).
 
-Tämän seurauksena molempien uhrien ARP-tauluihin tallentuu `h3`:n MAC-osoite vastapuolen IP-osoitteen kohdalle, ja kaikki niiden välinen liikenne alkaa kulkea `h3`:n kautta (Adversary-in-the-Middle / Man-in-the-Middle) (MITRE ATT&CK, T1557.002). Koska `h3`:ssa on kytketty päälle IP-pakettien edelleenlähetys (`ip_forward=1`) ja `iptables`-sääntö ohjaa portin 22 liikenteen paikalliselle `sshesame`-hunajapurkille, `h1`:n SSH-yhteys päätyy hyökkääjän valepalvelimelle.
+Tämän seurauksena molempien uhrien ARP-tauluihin tallentuu `h3`:n MAC-osoite vastapuolen IP-osoitteen kohdalle, ja kaikki niiden välinen liikenne alkaa kulkea `h3`:n kautta (Adversary-in-the-Middle / Man-in-the-Middle) (MITRE 2024b). Koska `h3`:ssa on kytketty päälle IP-pakettien edelleenlähetys (`ip_forward=1`) ja `iptables`-sääntö ohjaa portin 22 liikenteen paikalliselle `sshesame`-hunajapurkille, `h1`:n SSH-yhteys päätyy hyökkääjän valepalvelimelle (Iso-Anttila 2026b).
 
 # b) Samassa hakemistossa on myös ICMP Spoofing ja TCP Session Hijacking. Aja molemmat labrat läpi ja kerro, miten molemmat tekniikat toimivat.
 
 ## 1. ICMP Spoofing
 
-Aloitin ICMP Spoofing -harjoituksen käynnistämällä Mininetin `hub_topo.py`-topologialla ja avaamalla `xterm`-komennolla omat terminal-ikkunat kaikille kolmelle hostille (`h1`, `h2` ja `h3`). 
+Aloitin ICMP Spoofing -harjoituksen käynnistämällä Mininetin `hub_topo.py`-topologialla ja avaamalla `xterm`-komennolla omat terminal-ikkunat kaikille kolmelle hostille (`h1`, `h2` ja `h3`) (ssam246 2024).
 
-Repositorion `README.md`-tiedoston *Usage*-ohjeessa oli mainittu vain liikenteen kuuntelu (`sniff_icmp.py`) ja pingaaminen, joten varsinaisen hyökkäyksen todentamiseksi ajoin lisäksi kansiossa olevan `spoof_icmp.py`-skriptin kolmannella hostilla:
+Repositorion `README.md`-tiedoston *Usage*-ohjeessa oli mainittu vain liikenteen kuuntelu (`sniff_icmp.py`) ja pingaaminen, joten varsinaisen hyökkäyksen todentamiseksi ajoin lisäksi kansiossa olevan `spoof_icmp.py`-skriptin kolmannella hostilla (ssam246 2024):
 
 - **`Node: h3> python spoof_icmp.py`**: Käynnistää hyökkääjän koneella Scapy-skriptin, joka tarkkailee verkon ICMP-liikennettä ja lähettää väärennettyjä *ICMP Echo Reply* -paketteja.
 - **`Node: h1> python sniff_icmp.py`**: Käynnistää kohdekoneella kuunteluskriptin, joka tulostaa kaikki verkossa liikkuvat ICMP-paketit.
@@ -77,13 +77,13 @@ Kuva 4. ICMP Spoofing toiminnassa (vasemmalla hyökkääjä `h3`, keskellä ping
 ICMP (*Internet Control Message Protocol*) on Layer 3 -tason protokolla, jota käytetään verkkoyhteyksien testaamiseen (`ping`) ja virheilmoituksiin (Postel 1981, 1). Protokolla ei tarkista paketin lähettäjän henkilöllisyyttä, joten vastaanottaja ei pysty varmistamaan, kuka paketin on oikeasti lähettänyt (Postel 1981, 1–2).
 
 Tässä harjoituksessa hyökkäys etenee seuraavasti:
-1. Kun `h2` lähettää ICMP Echo Request -pyynnön osoitteeseen `10.0.0.1`, hub-verkossa oleva hyökkääjä (`h3`) näkee liikenteen ja nappaa paketin.
-2. Hyökkääjän `spoof_icmp.py`-skripti kopioi pyynnöstä tarvittavat tiedot ja rakentaa oman ICMP Echo Reply -vastauksen, jonka source IP -osoitteeksi on väärennetty `10.0.0.1` (`Sent 1 packets.`).
+1. Kun `h2` lähettää ICMP Echo Request -pyynnön osoitteeseen `10.0.0.1`, hub-verkossa oleva hyökkääjä (`h3`) näkee liikenteen ja nappaa paketin (ssam246 2024).
+2. Hyökkääjän `spoof_icmp.py`-skripti kopioi pyynnöstä tarvittavat tiedot ja rakentaa oman ICMP Echo Reply -vastauksen, jonka source IP -osoitteeksi on väärennetty `10.0.0.1` (`Sent 1 packets.`) (ssam246 2024).
 3. Koska myös oikea `h1` vastaa ping-pyyntöön, oikeanpuoleisessa `h1`-ikkunassa näkyy jokaiselle pyynnölle **kaksi** `10.0.0.1 > 10.0.0.2 echo-reply` -vastausta: kohdekoneen `h1` oma vastaus sekä hyökkääjän `h3` väärentämä vastaus.
 
 Laajemmissa hyökkäyksissä ICMP Spoofingia hyödynnetään esimerkiksi ICMP Redirect (Type 5) -viesteillä, joilla uhrin routing table saadaan ohjaamaan liikenne hyökkääjän kautta (MITRE 2024a), tai palvelunestohyökkäyksissä, joissa uhrin IP-osoitteella lähetetään suuri määrä väärennettyjä ping-pyyntöjä verkon broadcast-osoitteisiin.
 
-## TCP Session hijacking
+## 2. TCP Session Hijacking
 
 Jatkoin TCP Session Hijacking -harjoitukseen suoraan edellisestä tehtävästä valmiiksi käynnissä olleessa Mininetin `hub_topo.py`-ympäristössä hyödyntäen samoja kolmea hostia (`h1`, `h2` ja `h3`) (ssam246 2024).
 
@@ -99,17 +99,15 @@ Kuva 5. TCP Session Hijacking toiminnassa (vasemmalla hyökkääjä `h3`, keskel
 
 ### Havainnot ja miten TCP Session Hijacking toimii
 
-TCP (*Transmission Control Protocol*) on yhteydellinen Layer 4 -tason protokolla, joka pitää yllä aktiivista istuntoa osapuolten välillä IP-osoitteiden, porttinumeroiden sekä vaihtuvien **SEQ** (*Sequence Number*) ja **ACK** (*Acknowledgement Number*) -numeroiden avulla (OWASP 2024). Koska salaamaton TCP-liikenne ei sisällä kryptografista eheyden tai lähettäjän tarkistusta, samassa verkkosegmentissä oleva hyökkääjä pystyy lukemaan nämä arvot verkosta ja syöttämään istuntoon omaa dataansa (OWASP 2024).
+TCP (*Transmission Control Protocol*) on yhteydellinen Layer 4 -tason protokolla, joka pitää yllä aktiivista istuntoa osapuolten välillä IP-osoitteiden, porttinumeroiden sekä vaihtuvien **SEQ** (*Sequence Number*) ja **ACK** (*Acknowledgement Number*) -numeroiden avulla (OWASP 2024a). Koska salaamaton TCP-liikenne ei sisällä kryptografista eheyden tai lähettäjän tarkistusta, samassa verkkosegmentissä oleva hyökkääjä pystyy lukemaan nämä arvot verkosta ja syöttämään istuntoon omaa dataansa (OWASP 2024a).
 
 Tässä harjoituksessa kaappaus etenee seuraavasti:
 1. Kun asiakas (`h2`) ja palvelin (`h1`) avaavat TCP-yhteyden ja vaihtavat viestejä, hub-verkossa oleva hyökkääjä (`h3`) havaitsee liikenteen (`Sniffed TCP Data Packet`) (ssam246 2024).
-2. Hyökkääjän `tcp_sniff_and_hijack.py`-skripti lukee paketista dynaamisen lähdeportin (`57698`) sekä senhetkiset SEQ- ja ACK-numerot (OWASP 2024; ssam246 2024). Näiden tietojen pohjalta skripti rakentaa väärennetyn TCP-paketin, jonka *source IP* -osoitteeksi on huijattu `10.0.0.2` (`Injecting modified TCP payload: 10.0.0.2:57698 -> 10.0.0.1:12345`).
-3. Oikeanpuoleisessa `h1`-ikkunassa näkyy, kuinka palvelin vastaanottaa ensin oikean asiakkaan viestin (`Received: Hello from Host 2`) ja heti sen perään hyökkääjän injektoiman viestin (`Received: Hello from Host 1 You are hacked!`). Koska paketin portti- ja sekvenssinumerot täsmäävät avoimeen yhteyteen, palvelin hyväksyy paketin osaksi samaa luotettua istuntoa (OWASP 2024).
-4. Lopuksi palvelimen päätteessä näkyy `ConnectionResetError: [Errno 104] Connection reset by peer`. Tämä johtuu siitä, että hyökkääjän syöttämä ylimääräinen payload kasvatti palvelimen odottamaa SEQ-numeroa, jolloin asiakkaan (`h2`) ja palvelimen (`h1`) tilat menivät epätahtiin (*desynchronization*) ja yhteys katkesi TCP RST -pakettiin (OWASP 2024).
+2. Hyökkääjän `tcp_sniff_and_hijack.py`-skripti lukee paketista dynaamisen lähdeportin (`57698`) sekä senhetkiset SEQ- ja ACK-numerot (OWASP 2024a; ssam246 2024). Näiden tietojen pohjalta skripti rakentaa väärennetyn TCP-paketin, jonka *source IP* -osoitteeksi on huijattu `10.0.0.2` (`Injecting modified TCP payload: 10.0.0.2:57698 -> 10.0.0.1:12345`).
+3. Oikeanpuoleisessa `h1`-ikkunassa näkyy, kuinka palvelin vastaanottaa ensin oikean asiakkaan viestin (`Received: Hello from Host 2`) ja heti sen perään hyökkääjän injektoiman viestin (`Received: Hello from Host 1 You are hacked!`). Koska paketin portti- ja sekvenssinumerot täsmäävät avoimeen yhteyteen, palvelin hyväksyy paketin osaksi samaa luotettua istuntoa (OWASP 2024a).
+4. Lopuksi palvelimen päätteessä näkyy `ConnectionResetError: [Errno 104] Connection reset by peer`. Tämä johtuu siitä, että hyökkääjän syöttämä ylimääräinen payload kasvatti palvelimen odottamaa SEQ-numeroa, jolloin asiakkaan (`h2`) ja palvelimen (`h1`) tilat menivät epätahtiin (*desynchronization*) ja yhteys katkesi TCP RST -pakettiin (OWASP 2024a).
 
-Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja protokollia (kuten TLS/HTTPS tai SSH), jolloin ulkopuolinen tarkkailija ei pysty lukemaan liikennettä eikä muokkaamaan paketteja ilman salausavaimia (OWASP 2024).
-
-Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja protokollia (kuten TLS/HTTPS tai SSH), jolloin ulkopuolinen tarkkailija ei pysty lukemaan liikennettä eikä muokkaamaan paketteja ilman salausavaimia.
+Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja protokollia (kuten TLS/HTTPS tai SSH), jolloin ulkopuolinen tarkkailija ei pysty lukemaan liikennettä eikä muokkaamaan paketteja ilman salausavaimia (OWASP 2024a).
 
 ## c) TCP SYN-Flood -hyökkäys SDN-ympäristössä
 
@@ -141,6 +139,7 @@ Tässä harjoituksessa hyökkäys toimii seuraavasti:
 Tuotantoverkoissa TCP SYN-Flood -hyökkäyksiltä suojaudutaan esimerkiksi rajoittamalla saapuvien yhteyspyyntöjen määrää (*rate limiting*), käyttämällä *SYN cookies* -tekniikkaa (joka estää muistin varaamisen ennen kättelyn valmistumista) sekä suodattamalla poikkeavaa liikennettä palomuurin tai SDN-ohjaimen sääntöjen avulla (OWASP 2024b).
 
 ## Lähteet
+
 Iso-Anttila, L. 2026a. 03-mininet. Oppimateriaali. Haaga-Helia ammattikorkeakoulu. Luettavissa: https://hhmoodle.haaga-helia.fi/pluginfile.php/5055842/mod_resource/content/1/03-mininet.pdf. Luettu: 22.11.2026.
 
 Iso-Anttila, L. 2026b. Verkkoon tunkeutuminen ja tiedustelu. Luento 17.11.2026. Haaga-Helia ammattikorkeakoulu.
@@ -149,8 +148,14 @@ MITRE 2024a. Adversary-in-the-Middle. MITRE ATT&CK. Luettavissa: https://attack.
 
 MITRE 2024b. Adversary-in-the-Middle: ARP Cache Poisoning. MITRE ATT&CK®. Luettavissa: https://attack.mitre.org/techniques/T1557/002/. Luettu: 22.11.2026.
 
-OWASP 2024. Session hijacking attack. OWASP Foundation. Luettavissa: https://owasp.org/www-community/attacks/Session_hijacking_attack. Luettu: 22.11.2026.
+OWASP 2024a. Session hijacking attack. OWASP Foundation. Luettavissa: https://owasp.org/www-community/attacks/Session_hijacking_attack. Luettu: 22.11.2026.
+
+OWASP 2024b. SYN Flood. OWASP Foundation. Luettavissa: https://owasp.org/www-community/attacks/SYN_Flood. Luettu: 22.11.2026.
 
 Postel, J. 1981. RFC 792: Internet Control Message Protocol. Internet Engineering Task Force (IETF). Luettavissa: https://datatracker.ietf.org/doc/html/rfc792. Luettu: 22.11.2026.
 
+Santhisenan 2020. SDN_DDoS_Simulation. GitHub-repositorio. Luettavissa: https://github.com/santhisenan/SDN_DDoS_Simulation. Luettu: 22.11.2026.
+
 ssam246 2024. Network-Security-Lab. GitHub-repositorio. Luettavissa: https://github.com/ssam246/Network-Security-Lab. Luettu: 22.11.2026.
+
+Tekoälyn hyödyntäminen: Raportin tekstin oikeinkirjoituksen ja kieliasun tarkastamisessa on hyödynnetty Google Gemini -tekoälyä (22.11.2026).
