@@ -85,6 +85,31 @@ Laajemmissa hyökkäyksissä ICMP Spoofingia hyödynnetään esimerkiksi ICMP Re
 
 ## TCP Session hijacking
 
+Jatkoin TCP Session Hijacking -harjoitukseen suoraan edellisestä tehtävästä valmiiksi käynnissä olleessa Mininetin `hub_topo.py`-ympäristössä hyödyntäen samoja kolmea hostia (`h1`, `h2` ja `h3`) (ssam246 2024).
+
+Testasin aluksi repositorion `README.md`-ohjeessa mainittuja erillisiä `sniff_tcp_session.py`- ja `tcp_hijack.py`-skriptejä (ssam246 2024), mutta havaitsin, että `tcp_hijack.py` käytti kovakoodattua lähdeporttia (`52632`) eikä ehtinyt osua lyhytkestoiseen TCP-istuntoon ennen sen sulkeutumista. Tämän vuoksi käytin kansiossa ollutta `tcp_sniff_and_hijack.py`-skriptiä (ssam246 2024), joka kuuntelee aktiivista yhteyttä reaaliajassa ja injektoi paketin lennosta:
+
+- **`Node: h1> python tcp_server.py`**: Käynnistää TCP-palvelimen, joka jää kuuntelemaan yhteyksiä porttiin `12345` ja tulostaa vastaanotetut viestit.
+- **`Node: h3> python tcp_sniff_and_hijack.py`**: Käynnistää hyökkääjän koneella skriptin, joka tarkkailee `h3-eth0`-liitäntää, poimii aktiivisen istunnon portti- sekä SEQ/ACK-numerot ja lähettää väärennetyn TCP-paketin.
+- **`Node: h2> python tcp_client.py`**: Asiakas muodostaa TCP-yhteyden osoitteeseen `10.0.0.1:12345`, lähettää viestin `Hello from Host 2` ja vastaanottaa palvelimen vastauksen.
+
+<img width="2483" height="1351" alt="kuva" src="https://github.com/user-attachments/assets/f463a229-9d61-48df-aa3d-fd7eee8bc88d" />
+
+Kuva 5. TCP Session Hijacking toiminnassa (vasemmalla hyökkääjä `h3`, keskellä asiakas `h2` ja oikealla palvelin `h1`).
+
+### Havainnot ja miten TCP Session Hijacking toimii
+
+TCP (*Transmission Control Protocol*) on yhteydellinen Layer 4 -tason protokolla, joka pitää yllä aktiivista istuntoa osapuolten välillä IP-osoitteiden, porttinumeroiden sekä vaihtuvien **SEQ** (*Sequence Number*) ja **ACK** (*Acknowledgement Number*) -numeroiden avulla (OWASP 2024). Koska salaamaton TCP-liikenne ei sisällä kryptografista eheyden tai lähettäjän tarkistusta, samassa verkkosegmentissä oleva hyökkääjä pystyy lukemaan nämä arvot verkosta ja syöttämään istuntoon omaa dataansa (OWASP 2024).
+
+Tässä harjoituksessa kaappaus etenee seuraavasti:
+1. Kun asiakas (`h2`) ja palvelin (`h1`) avaavat TCP-yhteyden ja vaihtavat viestejä, hub-verkossa oleva hyökkääjä (`h3`) havaitsee liikenteen (`Sniffed TCP Data Packet`) (ssam246 2024).
+2. Hyökkääjän `tcp_sniff_and_hijack.py`-skripti lukee paketista dynaamisen lähdeportin (`57698`) sekä senhetkiset SEQ- ja ACK-numerot (OWASP 2024; ssam246 2024). Näiden tietojen pohjalta skripti rakentaa väärennetyn TCP-paketin, jonka *source IP* -osoitteeksi on huijattu `10.0.0.2` (`Injecting modified TCP payload: 10.0.0.2:57698 -> 10.0.0.1:12345`).
+3. Oikeanpuoleisessa `h1`-ikkunassa näkyy, kuinka palvelin vastaanottaa ensin oikean asiakkaan viestin (`Received: Hello from Host 2`) ja heti sen perään hyökkääjän injektoiman viestin (`Received: Hello from Host 1 You are hacked!`). Koska paketin portti- ja sekvenssinumerot täsmäävät avoimeen yhteyteen, palvelin hyväksyy paketin osaksi samaa luotettua istuntoa (OWASP 2024).
+4. Lopuksi palvelimen päätteessä näkyy `ConnectionResetError: [Errno 104] Connection reset by peer`. Tämä johtuu siitä, että hyökkääjän syöttämä ylimääräinen payload kasvatti palvelimen odottamaa SEQ-numeroa, jolloin asiakkaan (`h2`) ja palvelimen (`h1`) tilat menivät epätahtiin (*desynchronization*) ja yhteys katkesi TCP RST -pakettiin (OWASP 2024).
+
+Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja protokollia (kuten TLS/HTTPS tai SSH), jolloin ulkopuolinen tarkkailija ei pysty lukemaan liikennettä eikä muokkaamaan paketteja ilman salausavaimia (OWASP 2024).
+
+Tuotantoverkoissa TCP Session Hijacking estetään käyttämällä salattuja protokollia (kuten TLS/HTTPS tai SSH), jolloin ulkopuolinen tarkkailija ei pysty lukemaan liikennettä eikä muokkaamaan paketteja ilman salausavaimia.
 
 # c) Hakemistossa 02-SDN-DDos_Simulation tryout-kansiossa on työkalut, jotta voit ajaa TCP SYN-Flood-hyökkäyksen turvallisesti. Kirjoita, miten ajoit hyökkäyksen ja miten kyseinen hyökkäys toimii.
 
@@ -97,4 +122,8 @@ MITRE 2024a. Adversary-in-the-Middle. MITRE ATT&CK®. Luettavissa: https://attac
 
 MITRE 2024b. Adversary-in-the-Middle: ARP Cache Poisoning. MITRE ATT&CK®. Luettavissa: https://attack.mitre.org/techniques/T1557/002/. Luettu: 22.11.2026.
 
+OWASP 2024. Session hijacking attack. OWASP Foundation. Luettavissa: https://owasp.org/www-community/attacks/Session_hijacking_attack. Luettu: 22.11.2026.
+
 Postel, J. 1981. RFC 792: Internet Control Message Protocol. Internet Engineering Task Force (IETF). Luettavissa: https://datatracker.ietf.org/doc/html/rfc792. Luettu: 22.11.2026.
+
+ssam246 2024. Network-Security-Lab. GitHub-repositorio. Luettavissa: https://github.com/ssam246/Network-Security-Lab. Luettu: 22.11.2026.
